@@ -2,36 +2,31 @@
  * @Description:
  * @Author: 吴文周
  * @Github: https://github.com/fodelf
- * @Date: 2019-08-12 22:23:05
+ * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-12 23:38:52
+ * @LastEditTime: 2019-08-18 17:32:09
  -->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">ss</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <router-view></router-view>
   </div>
 </template>
+<script>
+export default {
+  name: 'app',
+  components: {
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  },
+  data () {
+    return {
+
     }
+  },
+  methods: {
   }
 }
+</script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+@import "../../assets/css/base.css";
 </style>

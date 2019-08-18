@@ -1,0 +1,130 @@
+@charset "utf-8";
+/*************************头部区域样式*************************/
+.headerArea {
+  background-color: #fff;
+  height: 56px;
+  box-shadow: 0 2px 8px 0 rgba(75, 75, 75, 0.1);
+  z-index: 10;
+  .logo-bar {
+    z-index: 60;
+    height: 100%;
+    position: relative;
+    margin-left: 29px;
+    float: left;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    color: #888;
+    .logo {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAASCAYAAADSSGl5AAAAGXRFW…N9vPrhBNzFr2nLxe7YF6620+SeZrrNFYUk/k0ud1FV/wgwALHqbdxYSS+FAAAAAElFTkSuQmCC)
+        no-repeat;
+      color: #666;
+      font-size: 20px;
+      display: -ms-flexbox;
+      display: flex;
+      float: left;
+      margin-right: 46px;
+      height: 18px;
+      width: 94px;
+      cursor: pointer;
+    }
+    .btn-back {
+      margin-right: 41px;
+    }
+  }
+  .pubulish-bar {
+    height: 100%;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pubulish-bar {
+    margin-left: auto;
+    float: right;
+    height: 56px;
+    line-height: 56px;
+    .iconBtn {
+      display: flex;
+      border-radius: 16px;
+      width: 80px;
+      height: 32px;
+      cursor: pointer;
+      line-height: 32px;
+      justify-items: center;
+    }
+    .btnStyle {
+      width: 72px;
+      height: 32px;
+      border-color: #1095fe;
+      color: #1095fe;
+      background: #fff;
+      margin: 0 24px 0 0;
+    }
+    .iconBtn i,
+    .iconBtn i:before {
+      display: -ms-flexbox;
+      display: flex;
+      margin-left: auto;
+    }
+    .iconBtn span {
+      margin-right: auto;
+    }
+    .pubulish-bar[data-v-697583d4] .is-round {
+      padding: 5px 6px;
+    }
+    .publish[data-v-697583d4] {
+      margin-right: 30px;
+      background: #1095fe;
+      color: #fff;
+    }
+    .btnStyle[data-v-697583d4] {
+      width: 72px;
+      height: 32px;
+      border-color: #1095fe;
+      color: #1095fe;
+      background: #fff;
+      margin: 0 24px 0 0;
+    }
+    .el-button.is-round {
+      border-radius: 20px;
+      padding: 12px 23px;
+    }
+    .el-button {
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      -webkit-appearance: none;
+      text-align: center;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      outline: 0;
+      margin: 0;
+      -webkit-transition: 0.1s;
+      transition: 0.1s;
+      font-weight: 500;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .el-button,
+    .el-checkbox {
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    .el-button,
+    .el-checkbox,
+    .el-step__icon-inner {
+      -webkit-user-select: none;
+    }
+    *,
+    :after,
+    :before {
+      box-sizing: border-box;
+    }
+  }
+}

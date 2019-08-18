@@ -4,34 +4,21 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-12 22:23:09
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-12 23:26:55
+ * @LastEditTime: 2019-08-15 22:13:53
  -->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">xxxx</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <mainArea></mainArea>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import mainArea from '@/views/preview/mainArea/mainArea.vue'
+export default {
+  name: 'app',
+  components: {
+    mainArea
   }
 }
-</style>
+</script>
+<style lang = "scss" >
+</style >

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-04 17:39:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-12 22:58:51
+ * @LastEditTime: 2019-08-18 17:16:51
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -59,17 +59,29 @@ module.exports = {
       title: '易推广',
       chunks: ['chunk-vendors', 'chunk-common', 'index', 'runtime~index']
     },
+    edit: {
+      // page 的入口
+      entry: 'src/pages/edit/main.js',
+      // 模板来源
+      template: 'src/pages/edit/index.html',
+      // 在 dist/index.html 的输出
+      filename: 'edit.html',
+      // 当使用 title 选项时，
+      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
+      title: '易推广',
+      chunks: ['chunk-vendors', 'chunk-common', 'edit', 'runtime~edit']
+    },
     preview: {
       // page 的入口
       entry: 'src/pages/preview/main.js',
       // 模板来源
-      template: 'src/pages/index/preview.html',
+      template: 'src/pages/preview/preview.html',
       // 在 dist/index.html 的输出
       filename: 'preview.html',
       // 当使用 title 选项时，
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
       title: '易推广',
-      chunks: ['chunk-vendors', 'chunk-common', 'index', 'runtime~preview']
+      chunks: ['chunk-vendors', 'chunk-common', 'preview', 'runtime~preview']
     }
   },
   publicPath: ispro ? '' : '/',
