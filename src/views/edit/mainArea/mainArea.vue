@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:28:34
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 16:40:24
+ * @LastEditTime: 2019-08-18 18:01:21
  -->
 <template>
   <div class="mainArea"
@@ -49,7 +49,7 @@
   </div>
 </template>
 <script>
-import mianArea from '@/views/index/mainArea/mainArea.js'
+import mianArea from '@/views/edit/mainArea/mainArea.js'
 export default {
   ...mianArea
 }

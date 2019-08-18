@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:23
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 12:54:54
+ * @LastEditTime: 2019-08-18 18:01:11
  -->
 <template>
   <div class="leftArea">
@@ -57,7 +57,7 @@
   </div>
 </template>
 <script>
-import leftArea from '@/views/index/leftArea/leftArea.js'
+import leftArea from '@/views/edit/leftArea/leftArea.js'
 export default {
   ...leftArea
 }

@@ -4,11 +4,11 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-07 17:03:22
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 12:55:17
+ * @LastEditTime: 2019-08-18 18:01:35
  */
 
 import { uuid } from '@/utils/index.js'
-import widgetList from '@/views/index/leftArea/widgetList.js'
+import widgetList from '@/views/edit/leftArea/widgetList.js'
 export default {
   name: 'leftArea',
   data () {
