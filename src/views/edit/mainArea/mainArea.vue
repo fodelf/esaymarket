@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:28:34
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 18:01:21
+ * @LastEditTime: 2019-08-20 08:50:52
  -->
 <template>
   <div class="mainArea"
@@ -22,6 +22,7 @@
                      :key="item.uuid"
                      :is="item.widgetsType"
                      :id="item.uuid"
+                     @setDisSelect='setDisSelect'
                      ref='widget'></component>
         </div>
       </div>

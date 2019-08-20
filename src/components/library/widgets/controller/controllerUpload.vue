@@ -4,10 +4,19 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:59:03
+ * @LastEditTime: 2019-08-19 20:20:20
  -->
 <template>
-  <div ref="controller"></div>
+  <el-upload class="upload-demo"
+             drag
+             action=""
+             multiple
+             style="width:100%;">
+    <i class="el-icon-upload"></i>
+    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+    <div class="el-upload__tip"
+         slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+  </el-upload>
 </template>
 <script>
 export default {
@@ -15,7 +24,7 @@ export default {
   data () {
     return {
       value: '',
-      functionName: this.mes.valueName
+      functionName: this.mes.functionName
     }
   },
   props: {

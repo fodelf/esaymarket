@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-15 21:56:33
+ * @LastEditTime: 2019-08-20 08:51:23
  */
 
 export default {
@@ -25,7 +25,11 @@ export default {
     $_mousemove () {
       let widgetDom = this.$refs.widget
       let widget = this
+      widgetDom.onmouseleave = function (event) {
+        widget.ishover = false
+      }
       widgetDom.onmousemove = function (event) {
+        widget.ishover = true
         let e = event || window.event
         let mainArea = widget.getParent()
         // let RootGroup = mainArea.getListenerChirldren()[0]
@@ -54,6 +58,9 @@ export default {
         widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
         // 鼠标按下拖拽设置
         widgetDom.onmousedown = function (event) {
+          widget.$emit('setDisSelect')
+          widget.isSelect = true
+          widget.ishover = false
           // 鼠标按下时取出虚线
           // widgetDom.addClass('ey-zindex')
           let e = event || window.event
@@ -66,6 +73,7 @@ export default {
           let eX = e.pageX
           let eY = e.pageY
           RootGroup.onmousemove = function (event) {
+            widget.ishover = false
             // 这么设置是否合理
             // widgetJqDom.removeClass('ey-mousehover')
             // $('.ey-selected').removeClass('ey-selected')
@@ -134,9 +142,13 @@ export default {
           }
           // 关闭鼠标功能
           RootGroup.onmouseup = function (event) {
+            widget.ishover = false
+            // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
           }
           RootGroup.onmouseleave = function () {
+            widget.ishover = false
+            // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
           }
         }

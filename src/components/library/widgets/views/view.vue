@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:26:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-06-08 18:06:33
+ * @LastEditTime: 2019-08-20 08:52:35
  -->
 <template>
   <div class="widget"
@@ -19,10 +19,14 @@ export default {
   mixins: [decorator],
   data () {
     return {
-      height: 0,
-      width: 0,
-      left: 0,
-      top: 0
+      height: '0px',
+      width: '100%',
+      left: '0px',
+      top: '0px',
+      cursor: 'pointer',
+      padding: '10px',
+      isSelect: true,
+      ishover: false
     }
   },
   methods: {
@@ -42,6 +46,14 @@ export default {
     // 获取jq对象
     getDom: function () {
       return this.$refs.widget
+    },
+    // 设置边距
+    setPadding: function (padding) {
+      this.padding = padding + 'px'
+    },
+    // 获取边距
+    getPadding: function (unit) {
+      return parseFloat(this.padding)
     },
     // 设置高度
     setHeight: function (height) {
@@ -156,7 +168,21 @@ export default {
 </script>
 <style lang="scss" >
 .widget {
-  background: red;
   position: absolute;
+  box-sizing: border-box;
+}
+// .widget:hover {
+//   // border: 1px solid rbg(225, 122, 146);
+//   border: 1px solid red;
+//   cursor: pointer;
+// }
+.widget_hover {
+  border: 1px solid rgb(225, 122, 146);
+  // border: 1px solid red;
+  cursor: pointer;
+}
+.selectClass {
+  border: 1px solid #7c4dff;
+  cursor: pointer;
 }
 </style>

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 17:17:24
+ * @LastEditTime: 2019-08-20 08:50:20
  -->
 <template>
   <div id='app'
@@ -13,7 +13,6 @@
       <el-header height='56'
                  style="padding:0px">
         <headerArea ref='headerArea'
-                    @changeValue='changeValue'
                     @getConfig='getConfig'></headerArea>
       </el-header>
       <el-container>

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-04 17:39:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 17:16:51
+ * @LastEditTime: 2019-08-19 08:11:56
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -63,7 +63,7 @@ module.exports = {
       // page 的入口
       entry: 'src/pages/edit/main.js',
       // 模板来源
-      template: 'src/pages/edit/index.html',
+      template: 'src/pages/edit/edit.html',
       // 在 dist/index.html 的输出
       filename: 'edit.html',
       // 当使用 title 选项时，

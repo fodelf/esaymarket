@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-12 22:23:05
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 16:52:05
+ * @LastEditTime: 2019-08-19 08:34:35
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -17,6 +17,7 @@ import Vant from 'vant'
 import 'vant/lib/dialog/style'
 Vue.prototype._GLOBAL = _global
 Vue.config.productionTip = false
+Vue.config.devtools = true
 Vue.use(ElementUI)
 Vue.use(Vant)
 

@@ -1,10 +1,12 @@
 @charset "utf-8";
+
 /*************************头部区域样式*************************/
 .headerArea {
   background-color: #fff;
   height: 56px;
   box-shadow: 0 2px 8px 0 rgba(75, 75, 75, 0.1);
   z-index: 10;
+
   .logo-bar {
     z-index: 60;
     height: 100%;
@@ -16,9 +18,10 @@
     display: -ms-flexbox;
     display: flex;
     color: #888;
+
     .logo {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAASCAYAAADSSGl5AAAAGXRFW…N9vPrhBNzFr2nLxe7YF6620+SeZrrNFYUk/k0ud1FV/wgwALHqbdxYSS+FAAAAAElFTkSuQmCC)
-        no-repeat;
+      // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAASCAYAAADSSGl5AAAAGXRFW…N9vPrhBNzFr2nLxe7YF6620+SeZrrNFYUk/k0ud1FV/wgwALHqbdxYSS+FAAAAAElFTkSuQmCC)
+      // no-repeat;
       color: #666;
       font-size: 20px;
       display: -ms-flexbox;
@@ -29,20 +32,24 @@
       width: 94px;
       cursor: pointer;
     }
+
     .btn-back {
       margin-right: 41px;
     }
   }
+
   .pubulish-bar {
     height: 100%;
     -ms-flex-align: center;
     align-items: center;
   }
+
   .pubulish-bar {
     margin-left: auto;
     float: right;
     height: 56px;
     line-height: 56px;
+
     .iconBtn {
       display: flex;
       border-radius: 16px;
@@ -52,6 +59,7 @@
       line-height: 32px;
       justify-items: center;
     }
+
     .btnStyle {
       width: 72px;
       height: 32px;
@@ -60,23 +68,28 @@
       background: #fff;
       margin: 0 24px 0 0;
     }
+
     .iconBtn i,
     .iconBtn i:before {
       display: -ms-flexbox;
       display: flex;
       margin-left: auto;
     }
+
     .iconBtn span {
       margin-right: auto;
     }
+
     .pubulish-bar[data-v-697583d4] .is-round {
       padding: 5px 6px;
     }
+
     .publish[data-v-697583d4] {
       margin-right: 30px;
       background: #1095fe;
       color: #fff;
     }
+
     .btnStyle[data-v-697583d4] {
       width: 72px;
       height: 32px;
@@ -85,10 +98,12 @@
       background: #fff;
       margin: 0 24px 0 0;
     }
+
     .el-button.is-round {
       border-radius: 20px;
       padding: 12px 23px;
     }
+
     .el-button {
       display: inline-block;
       line-height: 1;
@@ -116,11 +131,13 @@
       -moz-user-select: none;
       -ms-user-select: none;
     }
+
     .el-button,
     .el-checkbox,
     .el-step__icon-inner {
       -webkit-user-select: none;
     }
+
     *,
     :after,
     :before {

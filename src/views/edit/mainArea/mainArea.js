@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 16:31:39
+ * @LastEditTime: 2019-08-20 08:57:01
  */
 //  读取控制模块
 const viewModulesFiles = require.context(
@@ -31,7 +31,8 @@ export default {
       scale3d: 'scale3d(1, 1, 1)',
       left: '177px',
       top: '14px',
-      num: 100
+      num: 100,
+      selectWidget: null
     }
   },
   components: viewModules,
@@ -46,7 +47,9 @@ export default {
       console.log('mian')
       let index = this.cache[this.selectId]
       let selectWidget = this.$refs.widget[index]
-      selectWidget[mes.functionName](mes.value)
+      this.selectWidget = selectWidget
+      let functionName = 'set' + mes.functionName
+      selectWidget[functionName](mes.value)
     },
     /**
      * @name: add
@@ -121,9 +124,29 @@ export default {
     dragover (event) {
       event.preventDefault()
     },
+    /**
+     * @name: setDisSelect
+     * @description: 不选择
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setDisSelect () {
+      if (this.$refs.widget) {
+        this.$refs.widget.forEach(element => {
+          element.isSelect = false
+        })
+      }
+    },
     drop (e) {
+      let scollT = this.getScrollTop()
       let data = e.dataTransfer.getData('data')
+      this.top = e.pageY - 120 + scollT
       let widget = JSON.parse(data)
+      if (this.$refs.widget) {
+        this.$refs.widget.forEach(element => {
+          element.isSelect = false
+        })
+      }
       this.list.push(widget)
       this.cache[widget.uuid] = this.list.length - 1
       this.selectId = widget.uuid

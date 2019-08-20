@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:32:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 16:26:27
+ * @LastEditTime: 2019-08-20 08:36:02
  */
 
 //  读取配置文件
@@ -40,7 +40,8 @@ export default {
   name: 'rightArea',
   data () {
     return {
-      configTabs: {},
+      activeName: 0,
+      configTabs: [],
       tabsValue: '0',
       isShowTips: true
     }
@@ -48,12 +49,29 @@ export default {
   components: viewModules,
   methods: {
     changeWidgetType (mes) {
+      this.isShowTips = false
       this.configTabs = configModules[mes]['attributes']
       console.log(this.configTabs)
+      this.$nextTick(() => {
+        this.setControl()
+      })
     },
     changeValue (message) {
       console.log('right')
       this.$emit('changeValue', message)
+    },
+    /**
+     * @name: setControl
+     * @description: 设置控制初始化组件
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setControl () {
+      if (this.$refs.control) {
+        this.$refs.control.forEach(element => {
+          element.changeValue()
+        })
+      }
     }
   },
   created () {
