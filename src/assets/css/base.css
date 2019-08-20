@@ -189,3 +189,7 @@ cite {
   -ms-flex-direction: row;
   flex-direction: row;
 }
+#app {
+  width:100%;
+  height:100%;
+}

@@ -9,7 +9,7 @@
 <template>
   <el-container style="height:100%"
                 id='contentMain'>
-    <el-header>
+    <el-header class="headTit">
       <span>产品</span>
       <span>解决方案（暂未开放）</span>
       <span>研究院（暂未开放）</span>
@@ -44,5 +44,6 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
+@import "./main.scss";
 </style>
