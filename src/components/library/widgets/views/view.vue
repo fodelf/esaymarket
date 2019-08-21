@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:26:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:52:35
+ * @LastEditTime: 2019-08-20 19:57:43
  -->
 <template>
   <div class="widget"
@@ -15,6 +15,7 @@ import { debounce } from 'lodash'
 import decorator from '@/components/library/eyDecorator/decorator.js'
 export default {
   name: 'view',
+  props: ['id'],
   // 应对多种场景的装饰行为用数组比较合适
   mixins: [decorator],
   data () {
@@ -176,13 +177,4 @@ export default {
 //   border: 1px solid red;
 //   cursor: pointer;
 // }
-.widget_hover {
-  border: 1px solid rgb(225, 122, 146);
-  // border: 1px solid red;
-  cursor: pointer;
-}
-.selectClass {
-  border: 1px solid #7c4dff;
-  cursor: pointer;
-}
 </style>

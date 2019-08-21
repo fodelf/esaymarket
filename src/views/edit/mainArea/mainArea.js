@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:57:01
+ * @LastEditTime: 2019-08-21 08:39:56
  */
 //  读取控制模块
 const viewModulesFiles = require.context(
@@ -50,6 +50,26 @@ export default {
       this.selectWidget = selectWidget
       let functionName = 'set' + mes.functionName
       selectWidget[functionName](mes.value)
+    },
+    /**
+     * @name:setDelete
+     * @description:删除选中
+     * @param {type}:
+     * @return {type}:
+     */
+    setDelete () {
+      let index = this.cache[this.selectId]
+      this.list.splice(index, 1)
+      this.clearAttr()
+    },
+    /**
+     * @name:clearAttr
+     * @description:删除右侧属性
+     * @param {type}:
+     * @return {type}:
+     */
+    clearAttr () {
+      this.$emit('clearAttr')
     },
     /**
      * @name: add
@@ -138,19 +158,21 @@ export default {
       }
     },
     drop (e) {
+      this.removeOtherSelect()
       let scollT = this.getScrollTop()
       let data = e.dataTransfer.getData('data')
-      this.top = e.pageY - 120 + scollT
+      let top = e.pageY - 120 + scollT
       let widget = JSON.parse(data)
-      if (this.$refs.widget) {
-        this.$refs.widget.forEach(element => {
-          element.isSelect = false
-        })
-      }
       this.list.push(widget)
       this.cache[widget.uuid] = this.list.length - 1
       this.selectId = widget.uuid
       this.$emit('append', widget.widgetsType)
+      this.$nextTick(() => {
+        let selectWidget = this.$refs.widget[this.list.length - 1]
+        this.selectWidget = selectWidget
+        top = top >= 0 ? top : 0
+        selectWidget.setTop(top)
+      })
     },
     /**
      * @name: 默认名称
@@ -168,6 +190,18 @@ export default {
       })
       localStorage.setItem('config', JSON.stringify(config))
       window.open('preview.html')
+    },
+    /**
+     * @name: removeOtherSelect
+     * @description: 移除其他选中的样式
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    removeOtherSelect () {
+      if (this.selectWidget) {
+        this.selectWidget.$_removeSelectClass()
+        this.selectWidget.$_removeDelete()
+      }
     }
   },
   created () {

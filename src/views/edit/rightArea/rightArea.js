@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:32:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:36:02
+ * @LastEditTime: 2019-08-21 08:33:45
  */
 
 //  读取配置文件
@@ -55,6 +55,16 @@ export default {
       this.$nextTick(() => {
         this.setControl()
       })
+    },
+    /**
+     * @name: clearAttr
+     * @description: 清除属性
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    clearAttr () {
+      this.configTabs = []
+      this.isShowTips = true
     },
     changeValue (message) {
       console.log('right')

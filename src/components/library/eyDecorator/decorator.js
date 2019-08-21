@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:51:23
+ * @LastEditTime: 2019-08-21 08:46:17
  */
 
 export default {
@@ -16,6 +16,8 @@ export default {
   mounted () {
     if (this._GLOBAL['clientMessage']['module'] === 'develop') {
       this.$_initDecorator()
+      this.$_setSelectClass()
+      this.$_setDelete()
     }
   },
   methods: {
@@ -26,10 +28,10 @@ export default {
       let widgetDom = this.$refs.widget
       let widget = this
       widgetDom.onmouseleave = function (event) {
-        widget.ishover = false
+        widget.$_romoveHoverClass()
       }
       widgetDom.onmousemove = function (event) {
-        widget.ishover = true
+        widget.$_setHoverClass()
         let e = event || window.event
         let mainArea = widget.getParent()
         // let RootGroup = mainArea.getListenerChirldren()[0]
@@ -58,6 +60,7 @@ export default {
         widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
         // 鼠标按下拖拽设置
         widgetDom.onmousedown = function (event) {
+          widget.setMouseStyle('move')
           widget.$emit('setDisSelect')
           widget.isSelect = true
           widget.ishover = false
@@ -143,11 +146,13 @@ export default {
           // 关闭鼠标功能
           RootGroup.onmouseup = function (event) {
             widget.ishover = false
+            widget.setMouseStyle('pointer')
             // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
           }
           RootGroup.onmouseleave = function () {
             widget.ishover = false
+            widget.setMouseStyle('pointer')
             // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
           }
@@ -191,6 +196,34 @@ export default {
       if (!lArea && !rArea && !tArea && !bArea) {
         childWidget.setMouseStyle('move')
       }
+    },
+    removeOtherSelect () {
+      this.$emit('removeOtherSelect')
+    },
+    $_setHoverClass () {
+      this.$refs.widget.classList.add('widget_hover')
+    },
+    $_romoveHoverClass () {
+      this.$refs.widget.classList.remove('widget_hover')
+    },
+    $_setSelectClass () {
+      this.$refs.widget.classList.add('selectClass')
+    },
+    $_removeSelectClass () {
+      this.$refs.widget.classList.remove('selectClass')
+    },
+    $_setDelete () {
+      var span = document.createElement('span')
+      span.innerHTML = 'x'
+      span.classList.add('delete-icon')
+      var selef = this
+      span.addEventListener('click', function () {
+        selef.$emit('setDelete', selef.id)
+      })
+      this.$refs.widget.appendChild(span)
+    },
+    $_removeDelete () {
+      this.$refs.widget.removeChild(this.$refs.widget.lastChild)
     }
   }
 }
