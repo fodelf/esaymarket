@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:30
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:30:50
+ * @LastEditTime: 2019-08-21 08:35:16
  -->
 <template>
   <div class="rightArea">
@@ -60,6 +60,11 @@
         <span class="tz">“拖拽”</span>
         <br>
         至中间编辑区域
+        <br>
+        <span class="tz">“选中”</span>
+        <br>
+        你想要编辑的组件
+        <br>
       </p>
     </div>
   </div>

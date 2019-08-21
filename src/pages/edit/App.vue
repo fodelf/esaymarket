@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:50:20
+ * @LastEditTime: 2019-08-21 08:14:45
  -->
 <template>
   <div id='app'
@@ -23,7 +23,8 @@
         </el-aside>
         <el-main style="padding:0px">
           <mainArea ref='mainArea'
-                    @append='append'></mainArea>
+                    @append='append'
+                    @clearAttr='clearAttr'></mainArea>
         </el-main>
         <el-aside v-show='isShowRight'
                   style="width:328px">
@@ -67,11 +68,45 @@ export default {
     },
     getConfig () {
       this.$refs.mainArea.getConfig()
+    },
+    clearAttr () {
+      this.$refs.rightArea.clearAttr()
     }
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 @import "../../assets/css/base.css";
+* {
+  user-select: none;
+}
+.widget_hover {
+  border: 1px solid rgb(225, 122, 146);
+  cursor: pointer;
+}
+.selectClass {
+  border: 1px solid #7c4dff;
+  cursor: pointer;
+}
+.delete-icon {
+  display: block;
+  height: 20px;
+  position: absolute;
+  color: #7c4dff;
+  border: 1px solid #7c4dff;
+  margin: -1px;
+  background: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  zoom: 1;
+  width: 20px;
+  line-height: 20px;
+  right: 0;
+  top: 0;
+  text-align: center;
+}
 </style>
