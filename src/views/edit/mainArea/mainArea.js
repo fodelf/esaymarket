@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:29:41
+ * @LastEditTime: 2019-08-21 08:39:56
  */
 //  读取控制模块
 const viewModulesFiles = require.context(
@@ -158,6 +158,7 @@ export default {
       }
     },
     drop (e) {
+      this.removeOtherSelect()
       let scollT = this.getScrollTop()
       let data = e.dataTransfer.getData('data')
       let top = e.pageY - 120 + scollT
@@ -169,6 +170,7 @@ export default {
       this.$nextTick(() => {
         let selectWidget = this.$refs.widget[this.list.length - 1]
         this.selectWidget = selectWidget
+        top = top >= 0 ? top : 0
         selectWidget.setTop(top)
       })
     },
@@ -196,10 +198,9 @@ export default {
      * @return {type}: 默认类型
      */
     removeOtherSelect () {
-      if (this.$refs.widget) {
-        this.$refs.widget.forEach(element => {
-          element.isSelect = false
-        })
+      if (this.selectWidget) {
+        this.selectWidget.$_removeSelectClass()
+        this.selectWidget.$_removeDelete()
       }
     }
   },

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:25:02
+ * @LastEditTime: 2019-08-21 08:46:17
  */
 
 export default {
@@ -28,10 +28,10 @@ export default {
       let widgetDom = this.$refs.widget
       let widget = this
       widgetDom.onmouseleave = function (event) {
-        widget.ishover = false
+        widget.$_romoveHoverClass()
       }
       widgetDom.onmousemove = function (event) {
-        widget.ishover = true
+        widget.$_setHoverClass()
         let e = event || window.event
         let mainArea = widget.getParent()
         // let RootGroup = mainArea.getListenerChirldren()[0]
@@ -200,6 +200,12 @@ export default {
     removeOtherSelect () {
       this.$emit('removeOtherSelect')
     },
+    $_setHoverClass () {
+      this.$refs.widget.classList.add('widget_hover')
+    },
+    $_romoveHoverClass () {
+      this.$refs.widget.classList.remove('widget_hover')
+    },
     $_setSelectClass () {
       this.$refs.widget.classList.add('selectClass')
     },
@@ -217,7 +223,7 @@ export default {
       this.$refs.widget.appendChild(span)
     },
     $_removeDelete () {
-      this.$refs.widget.removeChild(this.$ref.widget.lastChild)
+      this.$refs.widget.removeChild(this.$refs.widget.lastChild)
     }
   }
 }
