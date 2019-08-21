@@ -1,0 +1,105 @@
+.production {
+    width:100%;
+    height:100%;
+    background:#f8fbff;
+    .topPro {
+        height:32px;
+        padding:40px 50px 12px;
+        .addSiteBtn {
+            float:left;
+            height:32px;
+            padding:0 20px;
+        }
+    }
+    .bottomDiv {
+        height:calc(100% - 99px);
+        width:calc(100% - 100px);
+        margin:0 50px;
+        background:#fff;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        .addSite {
+            width:210px;
+            text-align:center;
+            .noSiteBg {
+                width:210px;
+                height:140px;
+                background:url(../../../assets/img/null_site.png) no-repeat center;
+            }
+            p {
+                height:20px;
+                line-height:20px;
+                margin-top:15px;
+                margin-bottom:15px;
+                font-size:14px;
+                color:#888;
+            }
+            .addSiteBtn {
+                height:32px;
+                padding:0 20px;
+            }
+
+        }
+    }
+}
+/deep/.el-form {
+    float:right;
+    .el-form-item {
+        float:left;
+        margin-bottom:0;
+        margin-right:12px;
+        .el-form-item__content {
+            line-height:32px;
+            .el-input__inner {
+                height:32px;
+                line-height:32px;
+                border:1px solid #ddd;
+            }
+            .el-icon-search {
+                margin-left:5px;
+                margin-right:5px;
+            }
+        }
+        
+    }
+}
+/deep/.el-dialog {
+    width:490px;
+    .el-dialog__header {
+        border-bottom:1px #d3d3d3 solid;
+    }
+    .el-dialog__body {
+        overflow:hidden;
+        display:flex;
+        justify-content: center;
+        .createBox {
+            float:left;
+            width:180px;
+            height:240px;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 4px 10px 0 rgba(87,87,87,.1);
+            cursor: pointer;
+            position:relative;
+            span {
+                position:absolute;
+                width:100%;
+                text-align:center;
+                height: 16px;
+                line-height: 16px;
+                left: 0;
+                bottom: 20px;
+                font-size: 16px;
+                color: #888;
+            }
+        }
+        .createBlank {
+            margin-right:20px;
+            background:url(../../../assets/img/kongbaiye.png) no-repeat center;
+        }
+        .createTem {
+            background:url(../../../assets/img/moban.png) no-repeat center;
+        }
+    }
+
+}

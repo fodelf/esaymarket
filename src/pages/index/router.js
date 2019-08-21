@@ -10,7 +10,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MainLayout from '@/views/index/layout/main.vue'
 const Home = () => import('@/views/index/home/home.vue')
-const Control = () => import('@/views/index/dashboard/dashboard.vue')
+const Control = () => import('@/views/index/control/control.vue')
 const DashBorad = () => import('@/views/index/dashboard/dashboard.vue')
 Vue.use(Router)
 // 这是我的测试代码11

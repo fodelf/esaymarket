@@ -7,30 +7,55 @@
  * @LastEditTime: 2019-08-18 17:51:48
  -->
 <template>
-  <div>这是控制台</div>
+  <div class="production">
+    <div class='topPro clearfix'>
+      <el-button type="primary" class='addSiteBtn' icon="el-icon-plus" @click="dialogVisible=true">新增站点</el-button>
+      <el-form ref="form" :model="form">
+        <el-form-item>
+          <el-select v-model="time">
+            <el-option label="默认排序" value="默认排序"></el-option>
+            <el-option label="最后创建时间" value="最后创建时间"></el-option>
+            <el-option label="最后修改时间" value="最后修改时间"></el-option>
+          </el-select>
+        </el-form-item>
+       <el-form-item>
+          <el-select v-model="site">
+            <el-option label="全部站点" value="全部站点"></el-option>
+            <el-option label="已发布" value="已发布"></el-option>
+            <el-option label="已下线" value="已下线"></el-option>
+            <el-option label="未发布" value="未发布"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="keyWords" placeholder="请输入页面标题关键字"><em slot="suffix">|</em><i slot="suffix" class="el-icon-search"></i></el-input>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="bottomDiv">
+        <div class='addSite'>
+            <div class='noSiteBg'></div>
+            <p>当前暂无站点哦~</p>
+            <el-button type="primary" class='addSiteBtn' icon="el-icon-plus" @click="dialogVisible=true">新增第一个站点</el-button>
+        </div>
+    </div>
+    <el-dialog title="新建站点" class="clearfix" center :visible.sync="dialogVisible">
+      <div class="createBox createBlank">
+        <span>创建空白页</span>
+      </div>
+      <div class="createBox createTem">
+        <span>使用模板创建</span>
+      </div>
+    </el-dialog>
+  </div>
 </template>
 
 <script>
+import control from '@/views/index/control/control.js'
 export default {
-  name: 'Main',
-  data () {
-    return {
-
-    }
-  },
-  components: {
-  },
-  created () {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
-  }
+  ...control
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
+@import "./control.scss";
 </style>
