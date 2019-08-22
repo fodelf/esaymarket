@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:46:17
+ * @LastEditTime: 2019-08-21 23:30:33
  */
 
 export default {
@@ -27,11 +27,17 @@ export default {
     $_mousemove () {
       let widgetDom = this.$refs.widget
       let widget = this
+      widgetDom.onclick = function (event) {
+        if (!widget.$refs.widget.classList.contains('selectClass')) {
+          widget.setSelectValue()
+        }
+      }
       widgetDom.onmouseleave = function (event) {
         widget.$_romoveHoverClass()
       }
       widgetDom.onmousemove = function (event) {
         widget.$_setHoverClass()
+        widget.$_setMousePointer()
         let e = event || window.event
         let mainArea = widget.getParent()
         // let RootGroup = mainArea.getListenerChirldren()[0]
@@ -39,9 +45,10 @@ export default {
         // let limit = parseFloat(ey.callFunction(this, 'view', 'widget', '_remToPx', 0.4, 'return'))
         // let RootGroupWidth = mainArea.getWidth()
         let childWidget = widget
-        let childAbsoluteX = childWidget.getLeft('px') + 320
+        let childAbsoluteX = 490
         let childAbsoluteY = childWidget.getTop('px') + 120
-        let childWidth = childWidget.getWidth('px')
+        // let childWidth = childWidget.getWidth('px')
+        let childWidth = 375
         let childHeight = childWidget.getHeight('px')
         let childAbsoluteRight = childAbsoluteX + childWidth
         let childAbsoluteBottom = childAbsoluteY + childHeight
@@ -49,15 +56,15 @@ export default {
         let childLeft = childWidget.getLeft('px')
         let scollT = mainArea.getScrollTop()
         // 鼠标感应区域设置
-        let mousePesponse = 10
-        if (childWidth > 200 && childHeight > 200) {
-          mousePesponse = 20
-        }
+        let mousePesponse = 0
+        // if (childWidth > 200 && childHeight > 200) {
+        //   mousePesponse = 20
+        // }
         let lArea = e.pageX - childAbsoluteX < mousePesponse
         let rArea = childAbsoluteRight - e.pageX < mousePesponse
         let tArea = e.pageY - childAbsoluteY + scollT < mousePesponse
         let bArea = childAbsoluteBottom - e.pageY - scollT < mousePesponse
-        widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
+        // widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
         // 鼠标按下拖拽设置
         widgetDom.onmousedown = function (event) {
           widget.setMouseStyle('move')
@@ -114,6 +121,7 @@ export default {
               top = childTop - (eY - e.pageY)
 
               changeType = 'move'
+              childWidget.setMouseStyle('move')
             }
             // //高度限制
             // top = top < limit ? limit : top
@@ -126,13 +134,14 @@ export default {
             // if (width > (RootGroupWidth - limit)) {
             // return
             // }
-            widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
+            // widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
             console.log(changeType)
             // childWidget.setWidth(width)
             // childWidget.setHeight(height)
             // childWidget.setLeft(left)
             if (top >= 0) {
               childWidget.setTop(top)
+              childWidget.$emit('setChildControl', { name: 'Top', value: top })
             }
             // 改变控件时抛出事件
             // let changeWidget = ey.eventLibrary.eventBase('changeWidget')
@@ -145,13 +154,15 @@ export default {
           }
           // 关闭鼠标功能
           RootGroup.onmouseup = function (event) {
-            widget.ishover = false
+            // widget.ishover = false
             widget.setMouseStyle('pointer')
+            // widget.$_setMouseMove()
             // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
           }
           RootGroup.onmouseleave = function () {
-            widget.ishover = false
+            // widget.$_setMouseMove()
+            // widget.ishover = false
             widget.setMouseStyle('pointer')
             // widget.isSelsect = false
             RootGroup.onmousemove = RootGroup.onmouseup = RootGroup.onmouseleave = null
@@ -197,8 +208,26 @@ export default {
         childWidget.setMouseStyle('move')
       }
     },
+    setMouseStyle (cursor) {
+      this.$refs.widget.style.cursor = cursor
+    },
+    setSelectValue () {
+      this.$emit('setSelectValue', this.id)
+    },
     removeOtherSelect () {
       this.$emit('removeOtherSelect')
+    },
+    $_setMousePointer () {
+      this.$refs.widget.classList.add('mousePointer')
+    },
+    $_removeMousePointer () {
+      this.$refs.widget.classList.remove('mousePointer')
+    },
+    $_setMouseMove () {
+      this.$refs.widget.classList.add('mouseMove')
+    },
+    $_removeMouseMove () {
+      this.$refs.widget.classList.remove('mouseMove')
     },
     $_setHoverClass () {
       this.$refs.widget.classList.add('widget_hover')
@@ -217,7 +246,8 @@ export default {
       span.innerHTML = 'x'
       span.classList.add('delete-icon')
       var selef = this
-      span.addEventListener('click', function () {
+      span.addEventListener('click', function (event) {
+        event.stopPropagation()
         selef.$emit('setDelete', selef.id)
       })
       this.$refs.widget.appendChild(span)

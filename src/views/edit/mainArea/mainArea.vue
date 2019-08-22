@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:28:34
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:25:51
+ * @LastEditTime: 2019-08-21 19:54:58
  -->
 <template>
   <div class="mainArea"
@@ -25,6 +25,8 @@
                      @setDelete='setDelete'
                      @setDisSelect='setDisSelect'
                      @removeOtherSelect='removeOtherSelect'
+                     @setSelectValue='setSelectValue'
+                     @setChildControl='setChildControl'
                      ref='widget'></component>
         </div>
       </div>

@@ -4,13 +4,13 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 20:05:43
+ * @LastEditTime: 2019-08-21 22:37:55
  -->
 <template>
   <!-- <h5 ref="widget" class="widget" :id="_props.id" v-bind:style=:style="{'height':height ,'width':width,'top':top,'letf':left}">  -->
   <div ref="widget"
        class="widget"
-       v-bind:style="{ height: height, width: width,top:top,left:left,padding:padding,cursor:cursor}">
+       v-bind:style="{ height: height, width: width,top:top,left:left,padding:padding}">
     {{text}}
   </div>
 </template>

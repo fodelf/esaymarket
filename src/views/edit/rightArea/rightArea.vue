@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:30
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:35:16
+ * @LastEditTime: 2019-08-21 22:04:24
  -->
 <template>
   <div class="rightArea">
@@ -39,8 +39,8 @@
         <el-form ref="form"
                  :model="form"
                  label-width="60px">
-          <component v-for="(childItem) in item.values"
-                     :key="childItem.controllerName"
+          <component v-for="childItem in item.values"
+                     :key="childItem.id"
                      :is="childItem.controllerType"
                      :mes="childItem"
                      @changeValue=changeValue

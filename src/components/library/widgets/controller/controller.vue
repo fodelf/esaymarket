@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 08:59:03
+ * @LastEditTime: 2019-08-21 22:33:18
  -->
 <template>
   <div ref="controller"></div>
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    changeValue (value) {
+    changeValue () {
       console.log('sssss')
       let message = {
         'value': this.value,
@@ -43,9 +43,9 @@ export default {
 
   },
   watch: {
-    value () {
-      this.changeValue()
-    }
+    // value () {
+    //   this.changeValue()
+    // }
   },
   created () {
     this.value = this.mes.defaultValue
