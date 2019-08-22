@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 23:30:33
+ * @LastEditTime: 2019-08-22 08:18:44
  */
 
 export default {
@@ -46,7 +46,8 @@ export default {
         // let RootGroupWidth = mainArea.getWidth()
         let childWidget = widget
         let childAbsoluteX = 490
-        let childAbsoluteY = childWidget.getTop('px') + 120
+        // let childAbsoluteY = childWidget.getTop('px') + 120
+        let childAbsoluteY = childWidget.getTop('px') + 70
         // let childWidth = childWidget.getWidth('px')
         let childWidth = 375
         let childHeight = childWidget.getHeight('px')
@@ -218,10 +219,10 @@ export default {
       this.$emit('removeOtherSelect')
     },
     $_setMousePointer () {
-      this.$refs.widget.classList.add('mousePointer')
+      // this.$refs.widget.classList.add('mousePointer')
     },
     $_removeMousePointer () {
-      this.$refs.widget.classList.remove('mousePointer')
+      // this.$refs.widget.classList.remove('mousePointer')
     },
     $_setMouseMove () {
       this.$refs.widget.classList.add('mouseMove')
@@ -237,6 +238,7 @@ export default {
     },
     $_setSelectClass () {
       this.$refs.widget.classList.add('selectClass')
+      this.setMouseStyle('pointer')
     },
     $_removeSelectClass () {
       this.$refs.widget.classList.remove('selectClass')

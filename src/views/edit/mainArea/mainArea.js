@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 23:34:18
+ * @LastEditTime: 2019-08-22 08:28:02
  */
 import { uuid } from '@/utils/index.js'
 //  读取配置文件
@@ -203,14 +203,38 @@ export default {
      */
     getConfig () {
       var config = []
-      this.$refs.widget.forEach(element => {
-        config.push({
-          widgetName: element.widgetName,
-          top: element.getTop()
+      if (this.$refs.widget) {
+        this.$refs.widget.forEach(element => {
+          config.push({
+            widgetName: element.widgetName,
+            attributes: this.getValues(element)
+          })
+        })
+        console.log(config)
+        localStorage.setItem('config', JSON.stringify(config))
+        window.open('preview.html')
+      }
+    },
+    /**
+     * @name: setContrl
+     * @description: 设置控制器回读
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    getValues (widget) {
+      let widgetName = widget.widgetName
+      let configTabs = JSON.parse(
+        JSON.stringify(configModules[widgetName]['attributes'])
+      )
+      configTabs.forEach(item => {
+        item.values.forEach(childitem => {
+          let functionName = 'get' + childitem.valueName
+          let value = widget[functionName]()
+          childitem['id'] = uuid(32)
+          childitem.defaultValue = value
         })
       })
-      localStorage.setItem('config', JSON.stringify(config))
-      window.open('preview.html')
+      return configTabs
     },
     /**
      * @name: removeOtherSelect

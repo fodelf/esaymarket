@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-12 22:23:09
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-15 22:13:53
+ * @LastEditTime: 2019-08-22 08:30:15
  -->
 <template>
   <div id="app">
@@ -20,5 +20,7 @@ export default {
   }
 }
 </script>
-<style lang = "scss" >
-</style >
+
+<style rel="stylesheet/scss" lang="scss">
+@import "../../assets/css/base.css";
+</style>
