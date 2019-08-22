@@ -58,6 +58,8 @@ export default {
     handleSelect(key, keyPath){
       if(key == 2){
         this.$router.push({path: '/control'})
+      }else if(key == 3){
+        this.$router.push({path: '/dashBoard'})
       }
     }
   }

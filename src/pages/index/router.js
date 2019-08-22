@@ -11,7 +11,7 @@ import Router from 'vue-router'
 import MainLayout from '@/views/index/layout/main.vue'
 const Home = () => import('@/views/index/home/home.vue')
 const Control = () => import('@/views/index/control/control.vue')
-const DashBorad = () => import('@/views/index/dashboard/dashboard.vue')
+const DashBoard = () => import('@/views/index/dashboard/dashboard.vue')
 Vue.use(Router)
 // 这是我的测试代码11
 export default new Router({
@@ -45,13 +45,13 @@ export default new Router({
       ]
     },
     {
-      path: '/dashBorad',
+      path: '/dashBoard',
       name: '仪表盘',
       component: MainLayout,
       children: [
         {
           path: '',
-          component: DashBorad,
+          component: DashBoard,
           name: '仪表盘'
         }
       ]
