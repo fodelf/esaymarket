@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 20:08:02
+ * @LastEditTime: 2019-08-21 22:00:27
  */
 const config = {
   widgetName: 'Img',
@@ -32,20 +32,20 @@ const config = {
     {
       name: '内容',
       values: [
-        {
-          controllerName: '：',
-          controllerType: 'controllerUpload',
-          valueName: 'Src',
-          items: {},
-          defaultValue: ''
-        },
-        {
-          controllerName: '地址：',
-          controllerType: 'controllerInput',
-          valueName: 'Src',
-          items: {},
-          defaultValue: ''
-        }
+        // {
+        //   controllerName: '',
+        //   controllerType: 'controllerUpload',
+        //   valueName: 'Src',
+        //   items: {},
+        //   defaultValue: ''
+        // }
+        // {
+        //   controllerName: '地址：',
+        //   controllerType: 'controllerInput',
+        //   valueName: 'Src',
+        //   items: {},
+        //   defaultValue: ''
+        // }
       ]
     }
   ]

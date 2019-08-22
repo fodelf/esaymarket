@@ -4,8 +4,23 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:39:56
+ * @LastEditTime: 2019-08-22 08:28:02
  */
+import { uuid } from '@/utils/index.js'
+//  读取配置文件
+const configModulesFiles = require.context(
+  '@/components/library/widgets/configs',
+  false,
+  /\.js$/
+)
+const configModules = configModulesFiles
+  .keys()
+  .reduce((configModules, modulePath) => {
+    const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+    const value = configModulesFiles(modulePath)
+    configModules[moduleName] = value.default
+    return configModules
+  }, {})
 //  读取控制模块
 const viewModulesFiles = require.context(
   '@/components/library/widgets/views',
@@ -60,6 +75,8 @@ export default {
     setDelete () {
       let index = this.cache[this.selectId]
       this.list.splice(index, 1)
+      this.selectWidget = null
+      this.selectId = ''
       this.clearAttr()
     },
     /**
@@ -172,7 +189,11 @@ export default {
         this.selectWidget = selectWidget
         top = top >= 0 ? top : 0
         selectWidget.setTop(top)
+        this.$emit('setContrl', { name: 'Top', value: top })
       })
+    },
+    setChildControl (mes) {
+      this.$emit('setContrl', mes)
     },
     /**
      * @name: 默认名称
@@ -182,14 +203,38 @@ export default {
      */
     getConfig () {
       var config = []
-      this.$refs.widget.forEach(element => {
-        config.push({
-          widgetName: element.widgetName,
-          top: element.getTop()
+      if (this.$refs.widget) {
+        this.$refs.widget.forEach(element => {
+          config.push({
+            widgetName: element.widgetName,
+            attributes: this.getValues(element)
+          })
+        })
+        console.log(config)
+        localStorage.setItem('config', JSON.stringify(config))
+        window.open('preview.html')
+      }
+    },
+    /**
+     * @name: setContrl
+     * @description: 设置控制器回读
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    getValues (widget) {
+      let widgetName = widget.widgetName
+      let configTabs = JSON.parse(
+        JSON.stringify(configModules[widgetName]['attributes'])
+      )
+      configTabs.forEach(item => {
+        item.values.forEach(childitem => {
+          let functionName = 'get' + childitem.valueName
+          let value = widget[functionName]()
+          childitem['id'] = uuid(32)
+          childitem.defaultValue = value
         })
       })
-      localStorage.setItem('config', JSON.stringify(config))
-      window.open('preview.html')
+      return configTabs
     },
     /**
      * @name: removeOtherSelect
@@ -202,6 +247,55 @@ export default {
         this.selectWidget.$_removeSelectClass()
         this.selectWidget.$_removeDelete()
       }
+    },
+    /**
+     * @name: removeOtherSelect
+     * @description: 移除其他选中的样式
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setSelect () {
+      if (this.selectWidget) {
+        this.selectWidget.$_setSelectClass()
+        this.selectWidget.$_setDelete()
+      }
+    },
+    /**
+     * @name: setSelectValue
+     * @description: 设置选中状态
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setSelectValue (id) {
+      this.removeOtherSelect()
+      let index = this.cache[id]
+      this.selectId = id
+      let selectWidget = this.$refs.widget[index]
+      this.selectWidget = selectWidget
+      var configTabs = this.controlReady()
+      this.$emit('appendSelect', configTabs)
+      this.setSelect()
+    },
+    /**
+     * @name: setContrl
+     * @description: 设置控制器回读
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    controlReady () {
+      let widgetName = this.selectWidget.widgetName
+      let configTabs = JSON.parse(
+        JSON.stringify(configModules[widgetName]['attributes'])
+      )
+      configTabs.forEach(item => {
+        item.values.forEach(childitem => {
+          let functionName = 'get' + childitem.valueName
+          let value = this.selectWidget[functionName]()
+          childitem['id'] = uuid(32)
+          childitem.defaultValue = value
+        })
+      })
+      return configTabs
     }
   },
   created () {

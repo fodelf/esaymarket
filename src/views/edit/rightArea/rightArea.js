@@ -4,9 +4,9 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:32:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:33:45
+ * @LastEditTime: 2019-08-21 22:22:43
  */
-
+import { uuid } from '@/utils/index.js'
 //  读取配置文件
 const configModulesFiles = require.context(
   '@/components/library/widgets/configs',
@@ -43,18 +43,57 @@ export default {
       activeName: 0,
       configTabs: [],
       tabsValue: '0',
-      isShowTips: true
+      isShowTips: true,
+      cashContrls: {},
+      uuid: uuid
     }
   },
   components: viewModules,
   methods: {
     changeWidgetType (mes) {
       this.isShowTips = false
-      this.configTabs = configModules[mes]['attributes']
-      console.log(this.configTabs)
+      this.cashContrls = {}
+      let configTabs = JSON.parse(
+        JSON.stringify(configModules[mes]['attributes'])
+      )
+      configTabs.forEach(item => {
+        item.values.forEach(childitem => {
+          childitem['id'] = uuid(32)
+        })
+      })
+      this.configTabs = configTabs
       this.$nextTick(() => {
         this.setControl()
+        this.$refs.control.forEach(item => {
+          this.cashContrls[item.functionName] = item
+        })
       })
+    },
+    /**
+     * @name: appendSelect
+     * @description: 选中
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    appendSelect (configTabs) {
+      this.isShowTips = false
+      this.cashContrls = {}
+      this.configTabs = configTabs
+      this.$nextTick(() => {
+        this.$refs.control.forEach(item => {
+          this.cashContrls[item.functionName] = item
+        })
+        // this.$emit('controlReady')
+      })
+    },
+    /**
+     * @name: clearAttr
+     * @description: 清除属性
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setContrl (mes) {
+      this.cashContrls[mes.name].setValue(mes.value)
     },
     /**
      * @name: clearAttr

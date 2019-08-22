@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:26:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-20 19:57:43
+ * @LastEditTime: 2019-08-21 22:52:09
  -->
 <template>
   <div class="widget"
@@ -24,7 +24,7 @@ export default {
       width: '100%',
       left: '0px',
       top: '0px',
-      cursor: 'pointer',
+      // cursor: 'pointer',
       padding: '10px',
       isSelect: true,
       ishover: false
@@ -95,10 +95,10 @@ export default {
       // return this._getChange("_top", unit);
     },
     // 设置鼠标样式
-    setMouseStyle: function (mouseStyle) {
-      this.cursor = mouseStyle
-      // .this._Template.css('cursor', mouseStyle)
-    },
+    // setMouseStyle: function (mouseStyle) {
+    //   this.cursor = mouseStyle
+    //   // .this._Template.css('cursor', mouseStyle)
+    // },
     // px值转rem
     _pxToRem: function (val) {
       var base = parseFloat(document.documentElement.style.fontSize)

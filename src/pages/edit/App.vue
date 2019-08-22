@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 08:44:03
+ * @LastEditTime: 2019-08-21 22:51:30
  -->
 <template>
   <div id='app'
@@ -24,11 +24,14 @@
         <el-main style="padding:0px">
           <mainArea ref='mainArea'
                     @append='append'
-                    @clearAttr='clearAttr'></mainArea>
+                    @appendSelect='appendSelect'
+                    @clearAttr='clearAttr'
+                    @setContrl='setContrl'></mainArea>
         </el-main>
         <el-aside v-show='isShowRight'
                   style="width:328px">
           <rightArea ref='rightArea'
+                     @controlReady='controlReady'
                      @changeValue='changeValue'
                      :widgetType=widgetType
                      :widgetPorperties=widgetPorperties></rightArea>
@@ -71,6 +74,15 @@ export default {
     },
     clearAttr () {
       this.$refs.rightArea.clearAttr()
+    },
+    setContrl (mes) {
+      this.$refs.rightArea.setContrl(mes)
+    },
+    appendSelect (mes) {
+      this.$refs.rightArea.appendSelect(mes)
+    },
+    controlReady () {
+      this.$refs.mainArea.controlReady()
     }
   }
 }
@@ -83,11 +95,15 @@ export default {
 }
 .widget_hover {
   border: 1px solid rgb(225, 122, 146);
-  cursor: pointer;
 }
 .selectClass {
   border: 1px solid #7c4dff;
+}
+.mousePointer {
   cursor: pointer;
+}
+.mouseMove {
+  cursor: move;
 }
 .delete-icon {
   display: block;
