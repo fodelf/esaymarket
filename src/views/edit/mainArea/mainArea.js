@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-22 08:28:02
+ * @LastEditTime: 2019-08-23 08:23:17
  */
 import { uuid } from '@/utils/index.js'
 //  读取配置文件
@@ -64,7 +64,11 @@ export default {
       let selectWidget = this.$refs.widget[index]
       this.selectWidget = selectWidget
       let functionName = 'set' + mes.functionName
-      selectWidget[functionName](mes.value)
+      if (mes.isResize) {
+        selectWidget[functionName](mes.value + 'px')
+      } else {
+        selectWidget[functionName](mes.value)
+      }
     },
     /**
      * @name:setDelete
@@ -188,7 +192,7 @@ export default {
         let selectWidget = this.$refs.widget[this.list.length - 1]
         this.selectWidget = selectWidget
         top = top >= 0 ? top : 0
-        selectWidget.setTop(top)
+        selectWidget.setTop(top + 'px')
         this.$emit('setContrl', { name: 'Top', value: top })
       })
     },
@@ -230,6 +234,9 @@ export default {
         item.values.forEach(childitem => {
           let functionName = 'get' + childitem.valueName
           let value = widget[functionName]()
+          if (childitem.isResize) {
+            value = (value / 375) * 100
+          }
           childitem['id'] = uuid(32)
           childitem.defaultValue = value
         })

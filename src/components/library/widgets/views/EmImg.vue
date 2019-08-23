@@ -4,19 +4,19 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:38:05
+ * @LastEditTime: 2019-08-23 08:45:53
  -->
 <template>
   <div ref="widget"
        class="widget"
        v-bind:style="{ height: height, width: width,top:top,left:left,padding:padding}">
-    <img src="src"
-         v-show="ishow"
-         class="img" />
-    <div v-show="!ishow">
+    <img :src="src"
+         class="img"
+         draggable="false" />
+    <!-- <div v-show="!ishow">
       <div></div>
       <div></div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

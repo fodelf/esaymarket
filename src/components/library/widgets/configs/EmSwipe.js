@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 18:52:12
+ * @LastEditTime: 2019-08-23 08:57:38
  */
 const config = {
   widgetName: 'Swipe',
@@ -16,23 +16,42 @@ const config = {
         {
           controllerName: '上：',
           controllerType: 'controllerInput',
-          functionName: 'setTop',
+          valueName: 'Top',
           items: {},
+          isResize: true,
           defaultValue: '0'
         },
         {
           controllerName: '高：',
           controllerType: 'controllerInput',
-          name: 'Height',
-          functionName: 'setHeight',
+          isResize: true,
+          valueName: 'Height',
           items: {},
           defaultValue: '200'
+        },
+        {
+          controllerName: '边距：',
+          controllerType: 'controllerInput',
+          isResize: true,
+          valueName: 'Padding',
+          items: {},
+          defaultValue: '10'
         }
       ]
     },
     {
       name: '内容',
       values: [
+        {
+          controllerName: '',
+          controllerType: 'controllerUploads',
+          valueName: 'Src',
+          items: {},
+          defaultValue: [
+            'https://img.yzcdn.cn/vant/apple-1.jpg',
+            'https://img.yzcdn.cn/vant/apple-2.jpg'
+          ]
+        }
         // {
         //   'controllerName': '字体：',
         //   'controllerType': 'controllerSelect',

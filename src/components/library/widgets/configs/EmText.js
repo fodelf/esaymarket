@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 22:20:57
+ * @LastEditTime: 2019-08-22 23:22:51
  */
 const config = {
   widgetName: 'Text',
@@ -16,6 +16,7 @@ const config = {
         {
           controllerName: '上：',
           controllerType: 'controllerInput',
+          isResize: true,
           valueName: 'Top',
           items: {},
           defaultValue: '0'
@@ -23,6 +24,7 @@ const config = {
         {
           controllerName: '高：',
           controllerType: 'controllerInput',
+          isResize: true,
           valueName: 'Height',
           items: {},
           defaultValue: '40'
@@ -30,6 +32,7 @@ const config = {
         {
           controllerName: '边距：',
           controllerType: 'controllerInput',
+          isResize: true,
           valueName: 'Padding',
           items: {},
           defaultValue: '10'

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 20:20:20
+ * @LastEditTime: 2019-08-23 08:41:24
  -->
 <template>
   <el-upload class="upload-demo"
@@ -19,22 +19,10 @@
   </el-upload>
 </template>
 <script>
+import controller from '@/components/library/widgets/controller/controller.vue'
 export default {
   name: 'controller',
-  data () {
-    return {
-      value: '',
-      functionName: this.mes.functionName
-    }
-  },
-  props: {
-    mes: {
-      type: Object,
-      default: function () {
-        return {}
-      }
-    }
-  },
+  extends: controller,
   methods: {
     changeValue (value) {
       console.log('sssss')
@@ -43,21 +31,7 @@ export default {
         'functionName': this.functionName
       }
       this.$emit('changeValue', message)
-    },
-    setValue (value) {
-      this.value = value
     }
-  },
-  mounted () {
-
-  },
-  watch: {
-    value () {
-      this.changeValue()
-    }
-  },
-  created () {
-    this.value = this.mes.defaultValue
   }
 }
 </script>

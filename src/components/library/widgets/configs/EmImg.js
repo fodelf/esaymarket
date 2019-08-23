@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:00:27
+ * @LastEditTime: 2019-08-23 08:49:25
  */
 const config = {
   widgetName: 'Img',
@@ -16,6 +16,7 @@ const config = {
         {
           controllerName: '上：',
           controllerType: 'controllerInput',
+          isResize: true,
           valueName: 'Top',
           items: {},
           defaultValue: '0'
@@ -23,22 +24,31 @@ const config = {
         {
           controllerName: '高：',
           controllerType: 'controllerInput',
+          isResize: true,
           valueName: 'Height',
           items: {},
           defaultValue: '145'
+        },
+        {
+          controllerName: '边距：',
+          controllerType: 'controllerInput',
+          isResize: true,
+          valueName: 'Padding',
+          items: {},
+          defaultValue: '10'
         }
       ]
     },
     {
       name: '内容',
       values: [
-        // {
-        //   controllerName: '',
-        //   controllerType: 'controllerUpload',
-        //   valueName: 'Src',
-        //   items: {},
-        //   defaultValue: ''
-        // }
+        {
+          controllerName: '',
+          controllerType: 'controllerUpload',
+          valueName: 'Src',
+          items: {},
+          defaultValue: '../assets/img/default.svg'
+        }
         // {
         //   controllerName: '地址：',
         //   controllerType: 'controllerInput',

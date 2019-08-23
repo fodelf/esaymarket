@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:26:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:52:09
+ * @LastEditTime: 2019-08-22 23:29:30
  -->
 <template>
   <div class="widget"
@@ -50,7 +50,7 @@ export default {
     },
     // 设置边距
     setPadding: function (padding) {
-      this.padding = padding + 'px'
+      this.padding = padding
     },
     // 获取边距
     getPadding: function (unit) {
@@ -58,7 +58,7 @@ export default {
     },
     // 设置高度
     setHeight: function (height) {
-      this.height = height + 'px'
+      this.height = height
     },
     // 获取高度
     getHeight: function (unit) {
@@ -67,7 +67,7 @@ export default {
     // 设置组件宽度
     setWidth: function (width) {
       // this._setChange("_width", width);
-      this.width = width + 'px'
+      this.width = width
     },
     // 获取组件宽度
     getWidth: function (unit) {
@@ -81,12 +81,12 @@ export default {
     },
     // 设置左边距
     setLeft: function (left) {
-      this.left = left + 'px'
+      this.left = left
       // this._setChange("_left", left);
     },
     // 设置顶部距离
     setTop: function (top) {
-      this.top = top + 'px'
+      this.top = top
       // this._setChange("_top", top);
     },
     // 获取组件的高度值

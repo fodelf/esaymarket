@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 18:55:09
+ * @LastEditTime: 2019-08-23 09:00:53
  -->
 <template>
   <div v-bind:style="{ height: height, width: width,top:top,left:left,cursor:cursor}"
@@ -35,6 +35,14 @@ export default {
         'https://img.yzcdn.cn/vant/apple-1.jpg',
         'https://img.yzcdn.cn/vant/apple-2.jpg'
       ]
+    }
+  },
+  methods: {
+    setSrc (src) {
+      this.src = src
+    },
+    getSrc () {
+      return this.src
     }
   }
 }

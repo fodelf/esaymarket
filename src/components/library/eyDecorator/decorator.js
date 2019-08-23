@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-22 08:18:44
+ * @LastEditTime: 2019-08-22 23:38:26
  */
 
 export default {
@@ -141,7 +141,7 @@ export default {
             // childWidget.setHeight(height)
             // childWidget.setLeft(left)
             if (top >= 0) {
-              childWidget.setTop(top)
+              childWidget.setTop(top + 'px')
               childWidget.$emit('setChildControl', { name: 'Top', value: top })
             }
             // 改变控件时抛出事件
