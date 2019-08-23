@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 18:31:11
+ * @LastEditTime: 2019-08-23 18:39:50
  */
 const config = {
   widgetName: 'Swipe',
@@ -27,7 +27,7 @@ const config = {
           isResize: true,
           valueName: 'Height',
           items: {},
-          defaultValue: '40'
+          defaultValue: '250'
         },
         {
           controllerName: '边距：',

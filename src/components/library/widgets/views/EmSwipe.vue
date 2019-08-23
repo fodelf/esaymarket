@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 18:20:59
+ * @LastEditTime: 2019-08-23 18:39:39
  -->
 <template>
   <div ref="widget"
@@ -15,7 +15,8 @@
       <van-swipe-item v-for="(image, index) in images"
                       :key="index">
         <img :src="image"
-             style="width:100%;height:100%" />
+             style="width:100%;height:100%"
+             draggable="false" />
       </van-swipe-item>
     </van-swipe>
   </div>
