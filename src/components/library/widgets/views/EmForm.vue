@@ -4,12 +4,12 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 19:34:20
+ * @LastEditTime: 2019-08-23 18:34:33
  -->
 <template>
   <div ref="widget"
        class="widget"
-       v-bind:style="{ height: height, width: width,top:top,left:left,cursor:cursor}">
+       v-bind:style="{ height: height, width: width,top:top,left:left,padding:padding}">
     <div style="position: absolute;width:100%;height:100%;z-index:10"
          v-if="isShow"></div>
     <van-cell-group>
@@ -32,16 +32,7 @@ export default {
   extends: viewVue,
   data () {
     return {
-      isShow: true,
-      height: '120px',
-      width: '100%',
-      top: '0px',
-      left: '0px',
-      cursor: 'pointer',
-      images: [
-        'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg'
-      ]
+      widgetName: 'EmForm'
     }
   }
 }

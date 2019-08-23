@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 19:03:35
+ * @LastEditTime: 2019-08-23 18:31:41
  */
 const config = {
   widgetName: 'Phone',
@@ -16,23 +16,40 @@ const config = {
         {
           controllerName: '上：',
           controllerType: 'controllerInput',
-          functionName: 'setTop',
+          isResize: true,
+          valueName: 'Top',
           items: {},
           defaultValue: '0'
         },
         {
           controllerName: '高：',
           controllerType: 'controllerInput',
-          name: 'Height',
-          functionName: 'setHeight',
+          isResize: true,
+          valueName: 'Height',
           items: {},
           defaultValue: '40'
+        },
+        {
+          controllerName: '边距：',
+          controllerType: 'controllerInput',
+          isResize: true,
+          valueName: 'Padding',
+          items: {},
+          defaultValue: '10'
         }
       ]
     },
     {
       name: '内容',
       values: [
+        {
+          controllerName: '电话：',
+          controllerType: 'controllerInput',
+          isResize: true,
+          valueName: 'Phone',
+          items: {},
+          defaultValue: ''
+        }
         // {
         //   'controllerName': '字体：',
         //   'controllerType': 'controllerSelect',

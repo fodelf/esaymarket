@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-19 19:12:12
+ * @LastEditTime: 2019-08-23 18:35:58
  */
 const config = {
   widgetName: 'EmForm',
@@ -16,17 +16,26 @@ const config = {
         {
           controllerName: '上：',
           controllerType: 'controllerInput',
-          functionName: 'setTop',
+          isResize: true,
+          valueName: 'Top',
           items: {},
           defaultValue: '0'
         },
         {
           controllerName: '高：',
           controllerType: 'controllerInput',
-          name: 'Height',
-          functionName: 'setHeight',
+          isResize: true,
+          valueName: 'Height',
           items: {},
-          defaultValue: '120px'
+          defaultValue: '145'
+        },
+        {
+          controllerName: '边距：',
+          controllerType: 'controllerInput',
+          isResize: true,
+          valueName: 'Padding',
+          items: {},
+          defaultValue: '10'
         }
       ]
     },
