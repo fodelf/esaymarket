@@ -4,9 +4,11 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 08:23:17
+ * @LastEditTime: 2019-08-24 11:49:40
  */
 import { uuid } from '@/utils/index.js'
+import { preview } from '@/api/edit/edit.js'
+import QRCode from 'qrcodejs2'
 //  读取配置文件
 const configModulesFiles = require.context(
   '@/components/library/widgets/configs',
@@ -42,6 +44,7 @@ export default {
       list: [],
       selectId: '',
       cache: {},
+      cacheWiget: {},
       id: '',
       scale3d: 'scale3d(1, 1, 1)',
       left: '177px',
@@ -60,8 +63,9 @@ export default {
      */
     changeValue (mes) {
       console.log('mian')
-      let index = this.cache[this.selectId]
-      let selectWidget = this.$refs.widget[index]
+      // let index = this.cache[this.selectId]
+      // let selectWidget = this.$refs.widget[index]
+      let selectWidget = this.cacheWiget[this.selectId]
       this.selectWidget = selectWidget
       let functionName = 'set' + mes.functionName
       if (mes.isResize) {
@@ -187,13 +191,15 @@ export default {
       this.list.push(widget)
       this.cache[widget.uuid] = this.list.length - 1
       this.selectId = widget.uuid
-      this.$emit('append', widget.widgetsType)
+      // this.$emit('append', widget.widgetsType)
       this.$nextTick(() => {
         let selectWidget = this.$refs.widget[this.list.length - 1]
         this.selectWidget = selectWidget
+        this.cacheWiget[widget.uuid] = selectWidget
         top = top >= 0 ? top : 0
-        selectWidget.setTop(top + 'px')
-        this.$emit('setContrl', { name: 'Top', value: top })
+        this.$emit('append', { 'widgetsType':widget.widgetsType,'top':top})
+        // selectWidget.setTop(top + 'px')
+        // this.$emit('setContrl', { name: 'Top', value: top })
       })
     },
     setChildControl (mes) {
@@ -214,9 +220,25 @@ export default {
             attributes: this.getValues(element)
           })
         })
-        console.log(config)
-        localStorage.setItem('config', JSON.stringify(config))
-        window.open('preview.html')
+        console.log({ templateInfo: JSON.stringify({ list: config }) })
+        preview({ templateInfo: JSON.stringify({ list: config }) })
+          .then(res => {
+            document.getElementById('qrcode').innerHTML = ''
+            let url =
+              'http://10.0.0.62:9090/preview.html?templateId=' + res.templateId
+            this.qrcode = new QRCode('qrcode', {
+              width: 100,
+              height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
+              text: url // 二维码内容
+              // render: 'canvas' // 设置渲染方式（有两种方式 table和canvas，默认是canvas）
+              // background: '#f0f'
+              // foreground: '#ff0'
+            })
+          })
+          .catch(() => {})
+
+        // localStorage.setItem('config', JSON.stringify(config))
+        // window.open('preview.html')
       }
     },
     /**
@@ -277,7 +299,8 @@ export default {
       this.removeOtherSelect()
       let index = this.cache[id]
       this.selectId = id
-      let selectWidget = this.$refs.widget[index]
+      let selectWidget =  this.cacheWiget[id]
+      // let selectWidget = this.$refs.widget[index]
       this.selectWidget = selectWidget
       var configTabs = this.controlReady()
       this.$emit('appendSelect', configTabs)

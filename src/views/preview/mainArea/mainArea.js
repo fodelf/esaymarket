@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 08:23:37
+ * @LastEditTime: 2019-08-24 10:16:32
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -22,6 +22,7 @@
 //     return configModules
 //   }, {})
 //  读取控制模块
+import { preview } from '@/api/preview/preview.js'
 const viewModulesFiles = require.context(
   '@/components/library/widgets/views',
   false,
@@ -64,12 +65,30 @@ export default {
     }
   },
   created () {
-    this.list = JSON.parse(localStorage.getItem('config'))
-    this.$nextTick(() => {
-      this.$refs.widget.forEach((element, index) => {
-        this.setValues(element, this.list[index]['attributes'])
+    function getUrlParam (key) {
+      // 获取参数
+      var url = window.location.search
+      // 正则筛选地址栏
+      var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
+      // 匹配目标参数
+      var result = url.substr(1).match(reg)
+      // 返回参数值
+      return result ? decodeURIComponent(result[2]) : null
+    }
+    let templateId = getUrlParam('templateId')
+      ? getUrlParam('templateId')
+      : 'defaut'
+    var slef = this
+    preview({ templateId: templateId })
+      .then(res => {
+        slef.list = JSON.parse(res.templateInfo).list
+        slef.$nextTick(() => {
+          slef.$refs.widget.forEach((element, index) => {
+            slef.setValues(element, slef.list[index]['attributes'])
+          })
+        })
       })
-    })
+      .catch(() => {})
   }
   // wacth: {
   //   num () {

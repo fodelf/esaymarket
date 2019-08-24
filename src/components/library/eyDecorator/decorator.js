@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-22 23:38:26
+ * @LastEditTime: 2019-08-24 10:58:43
  */
 
 export default {
@@ -68,6 +68,9 @@ export default {
         // widget.$_setMouseStyle(lArea, rArea, tArea, bArea, childWidget)
         // 鼠标按下拖拽设置
         widgetDom.onmousedown = function (event) {
+          if (!widget.$refs.widget.classList.contains('selectClass')) {
+            widget.setSelectValue()
+          }
           widget.setMouseStyle('move')
           widget.$emit('setDisSelect')
           widget.isSelect = true

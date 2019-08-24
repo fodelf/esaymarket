@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:28:34
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 19:54:58
+ * @LastEditTime: 2019-08-24 09:02:20
  -->
 <template>
   <div class="mainArea"
@@ -49,6 +49,7 @@
             <a class="zoom-item zoom-put"
                @click="reduce"><i class="icon-Narrow">-</i></a></div>
         </div>
+        <div id="qrcode">二维码生成的位置</div>
       </div>
     </div>
   </div>

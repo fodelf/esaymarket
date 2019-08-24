@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:32:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:22:43
+ * @LastEditTime: 2019-08-24 11:50:39
  */
 import { uuid } from '@/utils/index.js'
 //  读取配置文件
@@ -54,7 +54,7 @@ export default {
       this.isShowTips = false
       this.cashContrls = {}
       let configTabs = JSON.parse(
-        JSON.stringify(configModules[mes]['attributes'])
+        JSON.stringify(configModules[mes.widgetsType]['attributes'])
       )
       configTabs.forEach(item => {
         item.values.forEach(childitem => {
@@ -67,6 +67,10 @@ export default {
         this.$refs.control.forEach(item => {
           this.cashContrls[item.functionName] = item
         })
+        if (this.cashContrls['Top']) {
+          this.setContrl({ name: 'Top', value: mes.top })
+          this.cashContrls['Top'].changeValue()
+        }
       })
     },
     /**

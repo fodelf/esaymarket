@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @Author: 吴文周
+ * @Github: https://github.com/fodelf
+ * @Date: 2019-08-14 19:09:48
+ * @LastEditors: 吴文周
+ * @LastEditTime: 2019-08-24 10:25:13
+ */
 import axios from 'axios'
 import { Message } from 'element-ui'
 // import { MessageBox, Message } from 'element-ui'
@@ -22,6 +30,7 @@ axios.interceptors.request.use(
     // please modify it according to the actual situation
     config.headers['sessionId'] = getToken()
     // }
+    config.headers['Content-Type'] = 'application/json'
     return config
   },
   error => {
@@ -36,7 +45,7 @@ axios.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
-  */
+   */
 
   /**
    * Determine the request status by custom code
@@ -48,7 +57,7 @@ axios.interceptors.response.use(
     // console.log('data')
     // console.log(res)
     // if the custom code is not 000000, it is judged as an error.
-    if (res.response_code !== '000000') {
+    if (res.code !== '000000') {
       Message({
         message: res.response_code_desc || 'error',
         type: 'error',
@@ -68,7 +77,7 @@ axios.interceptors.response.use(
       //     // })
       //   })
       // }
-      return Promise.reject(res.response_code_desc || 'error')
+      return Promise.reject(res.msg || 'error')
     } else {
       return res
     }
@@ -93,29 +102,33 @@ axios.interceptors.response.use(
 
 export default function request (args) {
   let method = args.method ? args.method : 'POST'
-  let params = args.params ? args.params : { 'msg': '' }
+  let params = args.params ? args.params : { msg: '' }
   let url = args.url ? args.url : ''
-  let resParams = {
-    'msg': JSON.stringify(params.msg)
-  }
+  // let resParams = {
+  //   'msg': JSON.stringify(params.msg)
+  // }
+  let resParams = params
   switch (method) {
     case 'POST':
       return new Promise((resolve, reject) => {
-        axios.post(url, resParams)
-          .then(res => {
-            let data = res.response_data ? JSON.parse(res.response_data) : {}
+        axios.post(url, resParams).then(
+          res => {
+            let data = res.data ? res.data : {}
             resolve(data)
-          }, err => {
+          },
+          err => {
             reject(err)
-          })
+          }
+        )
       })
     default:
       return new Promise((resolve, reject) => {
-        axios.get(url, {
-          params: resParams
-        })
+        axios
+          .get(url, {
+            params: resParams
+          })
           .then(res => {
-            let data = res.response_data ? JSON.parse(res.response_data) : {}
+            let data = res.data ? res.data : {}
             resolve(data)
           })
           .catch(err => {
