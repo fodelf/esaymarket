@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 09:51:19
+ * @LastEditTime: 2019-08-24 15:29:27
  -->
 <template>
   <div ref="widget"
@@ -60,7 +60,11 @@ export default {
       let templateId = getUrlParam('templateId')
         ? getUrlParam('templateId')
         : 'defaut'
-      submitForm({ 'templateId': templateId })
+      submitForm({ 'templateId': templateId, 'username': this.username, 'phone': this.phone, 'sourceIP': '', 'comeSite': '' }).then((res) => {
+        console.log(res)
+      }).catch(() => {
+
+      })
     }
   }
 }

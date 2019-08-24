@@ -4,23 +4,24 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 08:59:23
+ * @LastEditTime: 2019-08-24 16:00:27
  -->
 <template>
   <el-upload class="upload-demo"
              ref="upload"
-             action="https://jsonplaceholder.typicode.com/posts/"
+             action="/api/upload/img"
+             :on-success="handleRecentUploadSucc"
              :on-preview="handlePreview"
              :on-remove="handleRemove"
              :file-list="fileList"
-             :auto-upload="false">
+             multiple>
     <el-button slot="trigger"
                size="small"
                type="primary">选取文件</el-button>
-    <el-button style="margin-left: 10px;"
+    <!-- <el-button style="margin-left: 10px;"
                size="small"
                type="success"
-               @click="submitUpload">上传到服务器</el-button>
+               @click="submitUpload">上传到服务器</el-button> -->
     <div slot="tip"
          class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
   </el-upload>
@@ -32,7 +33,7 @@ export default {
   extends: controller,
   data () {
     return {
-      fileList: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }, { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }]
+      fileList: []
     }
   },
   methods: {
@@ -43,6 +44,24 @@ export default {
         'functionName': this.functionName
       }
       this.$emit('changeValue', message)
+    },
+    handleRecentUploadSucc (response, file, fileList) {
+      console.log(fileList)
+      this.handFiels(fileList)
+      this.changeValue()
+    },
+    handleRemove (file, fileList) {
+      this.handFiels(fileList)
+    },
+    handFiels (fileList) {
+      this.value = []
+      fileList.forEach((element) => {
+        var path = element.response ? element.response.data.serverPath : ''
+        if (path) {
+          this.value.push(element.response.data.serverPath)
+        }
+      })
+      this.changeValue()
     }
   }
 }

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-14 19:09:48
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 10:25:13
+ * @LastEditTime: 2019-08-24 15:45:36
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
@@ -28,7 +28,7 @@ axios.interceptors.request.use(
     // let each request carry token
     // ['X-Token'] is a custom headers key
     // please modify it according to the actual situation
-    config.headers['sessionId'] = getToken()
+    config.headers['Authorization'] = getToken()
     // }
     config.headers['Content-Type'] = 'application/json'
     return config
