@@ -4,20 +4,20 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-05 17:27:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 09:34:48
+ * @LastEditTime: 2019-08-24 17:35:01
  */
 import request from '@/utils/request'
 
 export function queryTemplateList (params) {
   return request({
-    url: '/compcag/SOLIDER_01',
+    url: '/api/template/get/templateList',
     method: 'POST',
     params: params
   })
 }
-export function SOLIDER_02 (params) {
+export function query (params) {
   return request({
-    url: '/compcag/SOLIDER_02',
+    url: '/api/template/get/templateList',
     method: 'POST',
     params: params
   })

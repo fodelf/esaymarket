@@ -4,39 +4,48 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:25
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 12:14:53
+ * @LastEditTime: 2019-08-25 22:31:54
  -->
 <template>
   <div class="headerArea">
-    <div class="logo-bar flex-row"><span class="logo"></span> <a class="btn-back el-dropdown-link  cursor-pointer no-select"><i class="el-icon-arrow-left fz16"></i>我的站点
-      </a> <span class="set el-tooltip item"
+    <div class="logo-bar flex-row">
+      <span class="logo"
+            @click="goTo">易推广</span>
+      <a class="btn-back el-dropdown-link  cursor-pointer no-select"
+         @click="goToIndex">
+        <i class="el-icon-arrow-left fz16">
+        </i>我的站点
+      </a>
+      <!-- <span class="set el-tooltip item"
             aria-describedby="el-tooltip-1644"
-            tabindex="0"><i class="icon-shezhi fz32 "></i> <span>站点设置</span></span></div>
+            tabindex="0"><i class="icon-shezhi fz32 "></i> <span>站点设置</span></span> -->
+    </div>
     <div class="nav flex-row">
-      <div data-v-0697d84e=""
-           class="edit-title flex-row">
-        <div data-v-0697d84e=""
-             class="label ">
+      <input type="text"
+             placeholder="网站标题"
+             v-model="temName"
+             class="temName">
+      <!-- <div class="edit-title flex-row">
+        <div class="label ">
 
-        </div> <a data-v-0697d84e=""
-           href="javascript:;"><i data-v-0697d84e=""
+        </div> <a href="javascript:;"><i data-v-0697d84e=""
              class="icon-Edit fz32"></i></a>
-      </div>
+      </div> -->
     </div>
     <!-- <div id="qrcode">二维码生成的位置</div> -->
-    <div class="pubulish-bar flex-row publish-bar"><a round=""
-         class="btnStyle iconBtn"
-         @click="save"><i class="fz32 icon-Save"></i><span>保存</span></a>
-      <a round=""
-         class="btnStyle iconBtn"><i class="fz32 icon-Yulan"
+    <div class="pubulish-bar flex-row publish-bar">
+      <a class="btnStyle iconBtn cursor-pointer"
+         @click="save"><i class="fz32 icon-Save"></i><span>保存未</span></a>
+      <a class="btnStyle iconBtn cursor-pointer"><i class="fz32 icon-Yulan"
            @click="preview"></i>
         <span @click="preview">预览</span>
       </a>
-      <button type="button"
+      <!-- <button type="button"
               class="el-button btnStyle publish el-button--default is-round"
               primary="">
         <span><i class="icon-fabu"></i> <span>发布</span> <i class="el-icon-loading"
-             style="display: none;"></i> <span style="margin-left: -2px; display: none;">发布中</span></span></button></div>
+             style="display: none;"></i> <span style="margin-left: -2px; display: none;">发布中</span></span></button> -->
+    </div>
   </div>
 </template>
 <script>
@@ -49,10 +58,23 @@ export default {
       height: '',
       width: '',
       left: '',
-      top: ''
+      top: '',
+      temName: '易推广'
     }
   },
   methods: {
+    /**
+     * @name: goToIndex
+     * @description: 跳转到首页
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    goToIndex () {
+      window.location.href = 'index.html#/control'
+    },
+    goTo () {
+      window.location.href = 'index.html'
+    },
     /**
      * 改变组件高度
      * @param

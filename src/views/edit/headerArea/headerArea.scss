@@ -7,6 +7,21 @@
   box-shadow: 0 2px 8px 0 rgba(75, 75, 75, 0.1);
   z-index: 10;
 
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .nav {
+    position: absolute;
+    margin-left: calc(50% - 84px)
+  }
+
+  .temName {
+    color: rgba(10, 18, 32, .87);
+    box-shadow: 0 -2px 0 0 #5182e4 inset;
+    height: 40px;
+  }
+
   .logo-bar {
     z-index: 60;
     height: 100%;
@@ -19,10 +34,13 @@
     display: flex;
     color: #888;
 
+
+
     .logo {
       // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAAASCAYAAADSSGl5AAAAGXRFW…N9vPrhBNzFr2nLxe7YF6620+SeZrrNFYUk/k0ud1FV/wgwALHqbdxYSS+FAAAAAElFTkSuQmCC)
       // no-repeat;
-      color: #666;
+      // color: #666;
+      color: #1095fe;
       font-size: 20px;
       display: -ms-flexbox;
       display: flex;

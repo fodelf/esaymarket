@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 18:35:58
+ * @LastEditTime: 2019-08-25 22:40:54
  */
 const config = {
   widgetName: 'EmForm',
@@ -27,7 +27,7 @@ const config = {
           isResize: true,
           valueName: 'Height',
           items: {},
-          defaultValue: '145'
+          defaultValue: '165'
         },
         {
           controllerName: '边距：',

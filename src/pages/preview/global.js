@@ -7,7 +7,7 @@
  * @LastEditTime: 2019-08-15 22:16:09
  */
 const _global = {
-  'clientMessage': {
+  Message: {
     module: 'preview'
   }
 }

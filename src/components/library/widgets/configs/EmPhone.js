@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 22:37:50
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-23 18:31:41
+ * @LastEditTime: 2019-08-25 22:59:39
  */
 const config = {
   widgetName: 'Phone',
@@ -27,7 +27,7 @@ const config = {
           isResize: true,
           valueName: 'Height',
           items: {},
-          defaultValue: '40'
+          defaultValue: '60'
         },
         {
           controllerName: '边距：',

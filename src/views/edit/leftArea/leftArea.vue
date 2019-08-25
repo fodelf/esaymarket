@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:23
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 18:01:11
+ * @LastEditTime: 2019-08-25 21:50:15
  -->
 <template>
   <div class="leftArea">
@@ -49,7 +49,7 @@
       </el-tab-pane>
       <el-tab-pane name="Two">
         <span slot="label"
-              class="tab-content">组件管理</span>
+              class="tab-content">组件管理（未）</span>
         <LifeStatus :form='form'
                     :allSelectInfo='allSelectInfo'></LifeStatus>
       </el-tab-pane>

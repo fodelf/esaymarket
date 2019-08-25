@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-03 23:27:45
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 10:58:43
+ * @LastEditTime: 2019-08-25 22:59:41
  */
 
 export default {
@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    if (this._GLOBAL['clientMessage']['module'] === 'develop') {
+    if (this._GLOBAL['Message']['module'] === 'develop') {
       this.$_initDecorator()
       this.$_setSelectClass()
       this.$_setDelete()

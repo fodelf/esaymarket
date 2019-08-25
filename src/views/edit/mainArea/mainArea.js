@@ -4,11 +4,12 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 11:49:40
+ * @LastEditTime: 2019-08-25 22:34:44
  */
-import { uuid } from '@/utils/index.js'
-import { preview } from '@/api/edit/edit.js'
 import QRCode from 'qrcodejs2'
+import { uuid, getUrlParam } from '@/utils/index.js'
+import { preview } from '@/api/edit/edit.js'
+import { previewTemp } from '@/api/preview/preview.js'
 //  读取配置文件
 const configModulesFiles = require.context(
   '@/components/library/widgets/configs',
@@ -50,7 +51,8 @@ export default {
       left: '177px',
       top: '14px',
       num: 100,
-      selectWidget: null
+      selectWidget: null,
+      centerDialogVisible: false
     }
   },
   components: viewModules,
@@ -197,7 +199,7 @@ export default {
         this.selectWidget = selectWidget
         this.cacheWiget[widget.uuid] = selectWidget
         top = top >= 0 ? top : 0
-        this.$emit('append', { 'widgetsType':widget.widgetsType,'top':top})
+        this.$emit('append', { widgetName: widget.widgetName, top: top })
         // selectWidget.setTop(top + 'px')
         // this.$emit('setContrl', { name: 'Top', value: top })
       })
@@ -220,25 +222,45 @@ export default {
             attributes: this.getValues(element)
           })
         })
-        console.log({ templateInfo: JSON.stringify({ list: config }) })
-        preview({ templateInfo: JSON.stringify({ list: config }) })
+        var param = {}
+        if (this.templateId) {
+          param = {
+            templateId: this.templateId,
+            templateInfo: JSON.stringify({ list: config })
+          }
+        } else {
+          param = {
+            templateInfo: JSON.stringify({ list: config })
+          }
+        }
+        preview(param)
           .then(res => {
-            document.getElementById('qrcode').innerHTML = ''
-            let url =
-              'http://10.0.0.62:9090/preview.html?templateId=' + res.templateId
-            this.qrcode = new QRCode('qrcode', {
-              width: 100,
-              height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
-              text: url // 二维码内容
-              // render: 'canvas' // 设置渲染方式（有两种方式 table和canvas，默认是canvas）
-              // background: '#f0f'
-              // foreground: '#ff0'
+            this.centerDialogVisible = true
+            this.$nextTick(() => {
+              document.getElementById('qrcode').innerHTML = ''
+              let url =
+                'http://10.0.0.62:9090/preview.html?templateId=' +
+                res.templateId
+              this.qrcode = new QRCode('qrcode', {
+                width: 100,
+                height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
+                text: url // 二维码内容
+                // render: 'canvas' // 设置渲染方式（有两种方式 table和canvas，默认是canvas）
+                // background: '#f0f'
+                // foreground: '#ff0'
+              })
             })
           })
           .catch(() => {})
 
         // localStorage.setItem('config', JSON.stringify(config))
         // window.open('preview.html')
+      } else {
+        this.$message({
+          message: '请拖拽组件',
+          type: 'error',
+          duration: 5 * 1000
+        })
       }
     },
     /**
@@ -297,9 +319,9 @@ export default {
      */
     setSelectValue (id) {
       this.removeOtherSelect()
-      let index = this.cache[id]
+      // let index = this.cache[id]
       this.selectId = id
-      let selectWidget =  this.cacheWiget[id]
+      let selectWidget = this.cacheWiget[id]
       // let selectWidget = this.$refs.widget[index]
       this.selectWidget = selectWidget
       var configTabs = this.controlReady()
@@ -326,9 +348,57 @@ export default {
         })
       })
       return configTabs
+    },
+    /**
+     * @name: 默认名称
+     * @description: 默认描述
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    init () {
+      this.templateId = getUrlParam('templateId')
+      if (this.templateId) {
+        var self = this
+        previewTemp({ templateId: this.templateId })
+          .then(res => {
+            let list = JSON.parse(res.templateInfo).list
+            list.map(item => {
+              item['uuid'] = uuid(32)
+              return item
+            })
+            self.list = list
+            self.$nextTick(() => {
+              self.$refs.widget.forEach((element, index) => {
+                self.setValues(element, self.list[index]['attributes'])
+                self.cacheWiget[element.id] = element
+              })
+            })
+          })
+          .catch(() => {})
+      }
+    },
+    /**
+     * @name: setContrl
+     * @description: 设置控制器回读
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    setValues (widget, attributes) {
+      attributes.forEach(item => {
+        item.values.forEach(childitem => {
+          let functionName = 'set' + childitem.valueName
+          if (childitem.isResize) {
+            widget[functionName](childitem.defaultValue + 'vw')
+          } else {
+            widget[functionName](childitem.defaultValue)
+          }
+        })
+      })
     }
   },
   created () {
+    // 判断是否是编辑过
+    this.init()
     // this.$emit('append', 'mainArea')
   }
   // wacth: {

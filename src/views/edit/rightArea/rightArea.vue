@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:30
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:04:24
+ * @LastEditTime: 2019-08-25 22:35:17
  -->
 <template>
   <div class="rightArea">
@@ -53,10 +53,10 @@
          v-show="isShowTips">
       <img class="tips-attr-img">
       <p class="tips-attr-p ">
-        <span class="tz">“双击”</span>
+        <!-- <span class="tz">“双击”</span>
         <br>
         或将左侧组件
-        <br>
+        <br> -->
         <span class="tz">“拖拽”</span>
         <br>
         至中间编辑区域

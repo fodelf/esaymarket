@@ -2,7 +2,14 @@
   background-color: #eef2fb;
   height: 100%;
   width: 100%;
+
   // position: relative;
+  #qrcode {
+    width: 100px;
+    height: 100px;
+    margin-left: calc(50% - 50px);
+  }
+
   .stage {
     background-color: #eef2fb;
     height: 100%;
@@ -11,12 +18,14 @@
     display: -ms-flexbox;
     display: flex;
     overflow-x: hidden;
+
     .contain {
       position: absolute;
       width: 375px;
       height: 667px;
       transform-origin: left top;
     }
+
     .iphone {
       user-select: none;
       pointer-events: none;
@@ -30,6 +39,7 @@
       background-size: 100% 100%;
       box-shadow: 0 0 32px 3px rgba(89, 91, 95, 0.08);
       border-radius: 41px;
+
       .content {
         margin: 46px 0 0 15px;
         border: 1px dashed #d1d1d1;
@@ -37,6 +47,7 @@
         height: 667px;
       }
     }
+
     .edit {
       width: 100%;
       height: 100%;
@@ -46,9 +57,11 @@
       top: 0;
       left: 0;
     }
+
     .toolbar {
       position: absolute;
       width: 48px;
+
       .btn-none {
         display: flex;
         -ms-flex-pack: center;
@@ -64,6 +77,7 @@
         font-size: 12px;
         cursor: pointer;
       }
+
       .zoom-tool .zoom-item {
         display: -ms-flexbox;
         display: flex;
@@ -76,11 +90,13 @@
         font-size: 32px;
         color: #8c8c8c;
       }
+
       .zoom-tool .label {
         height: 24px;
         font-size: 14px;
         line-height: 24px;
       }
+
       .zoom-tool {
         background: #fff;
       }

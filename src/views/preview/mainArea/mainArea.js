@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 10:16:32
+ * @LastEditTime: 2019-08-24 17:57:23
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -22,7 +22,7 @@
 //     return configModules
 //   }, {})
 //  读取控制模块
-import { preview } from '@/api/preview/preview.js'
+import { previewTemp, visit } from '@/api/preview/preview.js'
 const viewModulesFiles = require.context(
   '@/components/library/widgets/views',
   false,
@@ -79,7 +79,7 @@ export default {
       ? getUrlParam('templateId')
       : 'defaut'
     var slef = this
-    preview({ templateId: templateId })
+    previewTemp({ templateId: templateId })
       .then(res => {
         slef.list = JSON.parse(res.templateInfo).list
         slef.$nextTick(() => {
@@ -88,6 +88,10 @@ export default {
           })
         })
       })
+      .catch(() => {})
+    let source = getUrlParam('source') ? getUrlParam('source') : 'defaut'
+    visit({ templateId: templateId, comeSite: source })
+      .then(() => {})
       .catch(() => {})
   }
   // wacth: {
