@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-21 22:51:30
+ * @LastEditTime: 2019-08-26 08:56:16
  -->
 <template>
   <div id='app'
@@ -124,5 +124,6 @@ export default {
   right: 0;
   top: 0;
   text-align: center;
+  z-index: 100;
 }
 </style>
