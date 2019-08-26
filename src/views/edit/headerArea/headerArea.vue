@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:25
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-25 22:31:54
+ * @LastEditTime: 2019-08-26 18:57:45
  -->
 <template>
   <div class="headerArea">
@@ -141,7 +141,7 @@ export default {
      * @return {type}: 默认类型
      */
     preview () {
-      this.$emit('getConfig')
+      this.$emit('getConfig', this.temName)
     },
     /**
      * @name: 默认名称
