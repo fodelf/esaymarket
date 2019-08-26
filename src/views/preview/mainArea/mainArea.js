@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 17:57:23
+ * @LastEditTime: 2019-08-26 08:31:37
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -56,7 +56,8 @@ export default {
         item.values.forEach(childitem => {
           let functionName = 'set' + childitem.valueName
           if (childitem.isResize) {
-            widget[functionName](childitem.defaultValue + 'vw')
+            let value = (childitem.defaultValue / 375) * 100
+            widget[functionName](value + 'vw')
           } else {
             widget[functionName](childitem.defaultValue)
           }
