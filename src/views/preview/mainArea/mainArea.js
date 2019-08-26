@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 08:31:37
+ * @LastEditTime: 2019-08-26 20:20:56
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -22,6 +22,7 @@
 //     return configModules
 //   }, {})
 //  读取控制模块
+import QRCode from 'qrcodejs2'
 import { previewTemp, visit } from '@/api/preview/preview.js'
 const viewModulesFiles = require.context(
   '@/components/library/widgets/views',
@@ -40,7 +41,8 @@ export default {
   name: 'mainArea',
   data () {
     return {
-      list: []
+      list: [],
+      _showInPC: false
     }
   },
   components: viewModules,
@@ -55,11 +57,19 @@ export default {
       attributes.forEach(item => {
         item.values.forEach(childitem => {
           let functionName = 'set' + childitem.valueName
-          if (childitem.isResize) {
-            let value = (childitem.defaultValue / 375) * 100
-            widget[functionName](value + 'vw')
+          if (!this._showInPC) {
+            if (childitem.isResize) {
+              let value = (childitem.defaultValue / 375) * 100
+              widget[functionName](value + 'vw')
+            } else {
+              widget[functionName](childitem.defaultValue)
+            }
           } else {
-            widget[functionName](childitem.defaultValue)
+            if (childitem.isResize) {
+              widget[functionName](childitem.defaultValue + 'px')
+            } else {
+              widget[functionName](childitem.defaultValue)
+            }
           }
         })
       })
@@ -80,20 +90,47 @@ export default {
       ? getUrlParam('templateId')
       : 'defaut'
     var slef = this
-    previewTemp({ templateId: templateId })
-      .then(res => {
-        slef.list = JSON.parse(res.templateInfo).list
-        slef.$nextTick(() => {
-          slef.$refs.widget.forEach((element, index) => {
-            slef.setValues(element, slef.list[index]['attributes'])
-          })
+    var _limitedWidth = 1000
+    var deviceWidth = document.documentElement.clientWidth
+    if (deviceWidth > _limitedWidth) {
+      this._showInPC = true
+      this.$nextTick(() => {
+        document.getElementById('qrcode').innerHTML = ''
+        let url = window.location.href
+        this.qrcode = new QRCode('qrcode', {
+          width: 120,
+          height: 120, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
+          text: url // 二维码内容
+          // render: 'canvas' // 设置渲染方式（有两种方式 table和canvas，默认是canvas）
+          // background: '#f0f'
+          // foreground: '#ff0'
         })
       })
-      .catch(() => {})
-    let source = getUrlParam('source') ? getUrlParam('source') : 'defaut'
-    visit({ templateId: templateId, comeSite: source })
-      .then(() => {})
-      .catch(() => {})
+    } else {
+      this._showInPC = false
+    }
+    this.list = JSON.parse(
+      JSON.parse(localStorage.getItem('config')).templateInfo
+    ).list
+    this.$nextTick(() => {
+      this.$refs.widget.forEach((element, index) => {
+        this.setValues(element, slef.list[index]['attributes'])
+      })
+    })
+    // previewTemp({ templateId: templateId })
+    //   .then(res => {
+    //     slef.list = JSON.parse(res.templateInfo).list
+    //     slef.$nextTick(() => {
+    //       slef.$refs.widget.forEach((element, index) => {
+    //         slef.setValues(element, slef.list[index]['attributes'])
+    //       })
+    //     })
+    //   })
+    //   .catch(() => {})
+    // let source = getUrlParam('source') ? getUrlParam('source') : 'defaut'
+    // visit({ templateId: templateId, comeSite: source })
+    //   .then(() => {})
+    //   .catch(() => {})
   }
   // wacth: {
   //   num () {

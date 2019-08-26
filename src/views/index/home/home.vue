@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 19:25:17
+ * @LastEditTime: 2019-08-26 19:32:28
  -->
 <template>
   <div id="mainHome">
@@ -102,7 +102,7 @@ export default {
     login () {
       login(this.form).then((res) => {
         setToken(res.token)
-        sessionStorage.setItem('userId', res.userId)
+        localStorage.setItem('userId', res.userId)
       }).catch(() => {
 
       })

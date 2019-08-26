@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 18:59:34
+ * @LastEditTime: 2019-08-26 19:48:04
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -235,6 +235,8 @@ export default {
             templateName: templateName
           }
         }
+        localStorage.setItem('config', JSON.stringify(param))
+        window.open('preview.html')
         preview(param)
           .then(res => {
             this.centerDialogVisible = true
