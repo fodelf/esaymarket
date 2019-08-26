@@ -1,10 +1,10 @@
 <!--
- * @Description:
+ * @Description:表单组件
  * @Author: 吴文周
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-25 22:55:10
+ * @LastEditTime: 2019-08-26 08:27:30
  -->
 <template>
   <div ref="widget"
@@ -31,7 +31,9 @@
 </template>
 <script>
 import viewVue from './view.vue'
+import { getUrlParam } from '@/utils/index.js'
 import { submitForm } from '@/api/preview/preview.js'
+import { debounce } from 'lodash'
 export default {
   name: 'Swipe',
   extends: viewVue,
@@ -50,17 +52,7 @@ export default {
      * @param {type}: 默认参数
      * @return {type}: 默认类型
      */
-    submit () {
-      function getUrlParam (key) {
-        // 获取参数
-        var url = window.location.search
-        // 正则筛选地址栏
-        var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)')
-        // 匹配目标参数
-        var result = url.substr(1).match(reg)
-        // 返回参数值
-        return result ? decodeURIComponent(result[2]) : null
-      }
+    submit: debounce(function () {
       let templateId = getUrlParam('templateId')
         ? getUrlParam('templateId')
         : 'defaut'
@@ -79,7 +71,7 @@ export default {
           message: '报名失败,请重新填写'
         })
       })
-    }
+    }, 5000)
   },
   created () {
     this.isShow = this._GLOBAL['Message']['module'] === 'develop'
