@@ -4,15 +4,26 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:28:34
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-15 22:14:52
+ * @LastEditTime: 2019-08-26 08:41:37
  -->
 <template>
   <div class="mainArea"
        ref="mainArea">
-    <component v-for="(item,index) in list"
-               ref='widget'
-               :is="item.widgetName"
-               :key="index"></component>
+    <div v-if="isMobile">
+      <component v-for="(item,index) in list"
+                 ref='widget'
+                 :is="item.widgetName"
+                 :key="index"></component>
+    </div>
+    <div v-else>
+      <div>
+        <component v-for="(item,index) in list"
+                   ref='widget'
+                   :is="item.widgetName"
+                   :key="index"></component>
+      </div>
+      <div>二维码</div>
+    </div>
   </div>
 </template>
 <script>
