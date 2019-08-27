@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="tuichudenglu" unicode="&#58909;" d="M960.512 356.288l-144.768-144.832-48.256 48.256 60.224 60.288H512V384h325.76l-70.272 70.272 48.256 48.256 144.768-144.768-0.704-0.768 0.704-0.704zM704 704a64 64 0 0 1-64 64H192a64 64 0 0 1-64-64v-640a64 64 0 0 1 64-64h448a64 64 0 0 1 64 64v64h64v-64a128 128 0 0 0-128-128H192a128 128 0 0 0-128 128V704a128 128 0 0 0 128 128h448a128 128 0 0 0 128-128v-128h-64V704z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>

@@ -7,19 +7,29 @@
  * @LastEditTime: 2019-08-18 17:47:38
  -->
 <template>
-  <el-container style="height:100%"
+  <div style="height:100%"
                 id='contentMain'>
-    <el-header class="headTit">
-      <span>产品</span>
-      <span>解决方案（暂未开放）</span>
-      <span>研究院（暂未开放）</span>
-      <span>控制台</span>
-    </el-header>
+    <div class='header'>
+      <span class='logoTit'>易推广</span>
+      <el-menu :default-active="activePath"
+               class="el-menu-demo"
+               mode="horizontal"
+               @select="handleSelect">
+        <el-menu-item index="/">产品</el-menu-item>
+        <el-menu-item index="" disabled>解决方案（暂未开放）</el-menu-item>
+        <el-menu-item index="" disabled>研究院（暂未开放）</el-menu-item>
+        <el-menu-item index="/control">控制台</el-menu-item>
+      </el-menu>
+      <p>
+        <span>欢迎你！<em>{{userName}}</em></span>
+        <i class='iconfont icon-tuichudenglu' title="退出登录" @click="logout()"></i>
+      </p>
+    </div>
     <el-main style="padding:0px"
              ref='main'>
       <router-view />
     </el-main>
-  </el-container>
+  </div>
 </template>
 
 <script>
@@ -27,7 +37,8 @@ export default {
   name: 'Main',
   data () {
     return {
-
+      userName:"",
+      activePath:"/"
     }
   },
   components: {
@@ -39,7 +50,28 @@ export default {
 
   },
   methods: {
+     /**
+     * @name: handleSelect
+     * @description: 路由跳转
+     */
+    handleSelect(key,path){
+      this.activePath = key;
+      this.$router.push({
+        path:key
+      })
+    },
+    /**
+     * @name: logout
+     * @description: 退出登录
+     */
+    logout(){
 
+    }
+  },
+  created(){
+    this.$nextTick(()=>{
+      this.userName = sessionStorage.getItem("userName");
+    })
   }
 }
 </script>

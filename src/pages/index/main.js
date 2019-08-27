@@ -15,6 +15,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Vant from 'vant'
 import 'vant/lib/dialog/style'
+import '@/assets/iconfont/iconfont.css'
 Vue.prototype._GLOBAL = _global
 Vue.config.productionTip = false
 Vue.config.devtools = true

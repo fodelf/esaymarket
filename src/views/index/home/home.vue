@@ -8,7 +8,7 @@
  -->
 <template>
   <div id="mainHome">
-    <div class='logoNav clearfix'>
+    <!-- <div class='logoNav clearfix'>
       <p class='logoTit'>
         <span>易推广</span>
       </p>
@@ -20,7 +20,7 @@
         <el-menu-item index="2">我的站点</el-menu-item>
         <el-menu-item index="3">数据统计</el-menu-item>
       </el-menu>
-    </div>
+    </div> -->
     <div class='startCon clearfix'>
       <div class='leftDiv'>
         <span class='line1'></span>
@@ -86,13 +86,13 @@ export default {
         path: '/control'
       })
     },
-    handleSelect (key, keyPath) {
-      if (key === 2) {
-        this.$router.push({ path: '/control' })
-      } else if (key === 3) {
-        this.$router.push({ path: '/dashBoard' })
-      }
-    },
+    // handleSelect (key, keyPath) {
+    //   if (key === 2) {
+    //     this.$router.push({ path: '/control' })
+    //   } else if (key === 3) {
+    //     this.$router.push({ path: '/dashBoard' })
+    //   }
+    // },
     /**
      * @name: login
      * @description: 登陆方法

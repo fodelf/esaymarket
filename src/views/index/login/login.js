@@ -30,6 +30,7 @@ export default {
           login(this.ruleForm).then((res) => {
             setToken(res.token)
             sessionStorage.setItem('userId', res.userId)
+            sessionStorage.setItem('userName', this.ruleForm.userName)
             this.$router.push({
               path: '/'
             })
