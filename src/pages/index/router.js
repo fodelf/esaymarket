@@ -9,6 +9,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainLayout from '@/views/index/layout/main.vue'
+import Login from '@/views/index/login/login.vue'
+import Register from '@/views/index/register/register.vue'
 const Home = () => import('@/views/index/home/home.vue')
 const Control = () => import('@/views/index/control/control.vue')
 const DashBoard = () => import('@/views/index/dashboard/dashboard.vue')
@@ -55,6 +57,16 @@ export default new Router({
           name: '仪表盘'
         }
       ]
+    },
+    {
+      path: '/login',
+      name: '登录',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: '注册',
+      component: Register
     }
   ]
 })

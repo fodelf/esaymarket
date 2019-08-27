@@ -49,8 +49,6 @@
 </template>
 
 <script>
-import { login } from '@/api/index/login.js'
-import { setToken } from '@/utils/auth'
 export default {
   name: 'Main',
   data () {
