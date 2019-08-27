@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 16:42:55
+ * @LastEditTime: 2019-08-26 19:32:28
  -->
 <template>
   <div id="mainHome">
@@ -42,13 +42,22 @@
           <el-input v-model="form.password"></el-input>
         </el-form-item>
         <el-button @click="login"> 登陆</el-button>
+        <el-form-item label="用户名">
+          <el-input v-model="form.username1"></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="form.password1"></el-input>
+        </el-form-item>
+        <el-button @click="login"> 注册</el-button>
       </el-form>
-
     </div>
   </div>
 </template>
 
 <script>
+import { login, register } from '@/api/index/login.js'
+import { setToken } from '@/utils/auth'
+import md5 from 'js-md5'
 export default {
   name: 'Main',
   data () {
@@ -56,7 +65,9 @@ export default {
       activeIndex: '1',
       form: {
         username: '',
-        password: ''
+        password: '',
+        username1: '',
+        password1: ''
       }
     }
   },
@@ -91,7 +102,24 @@ export default {
     login () {
       login(this.form).then((res) => {
         setToken(res.token)
-        sessionStorage.setItem('userId', res.userId)
+        localStorage.setItem('userId', res.userId)
+      }).catch(() => {
+
+      })
+    },
+    /**
+     * @name: login
+     * @description: 登陆方法
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    register () {
+      let param = {
+        username: this.form.username1,
+        password: md5(this.form.password1)
+      }
+      register(param).then((res) => {
+        console.log('注册成功')
       }).catch(() => {
 
       })

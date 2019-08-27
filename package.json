@@ -37,6 +37,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "happypack": "^5.0.1",
     "image-webpack-loader": "^5.0.0",
+    "js-md5": "^0.7.3",
     "node-sass": "^4.9.0",
     "qrcodejs2": "0.0.2",
     "sass-loader": "^7.1.0",

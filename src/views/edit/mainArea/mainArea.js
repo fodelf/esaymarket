@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 08:35:46
+ * @LastEditTime: 2019-08-26 19:48:04
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -213,7 +213,7 @@ export default {
      * @param {type}: 默认参数
      * @return {type}: 默认类型
      */
-    getConfig () {
+    getConfig (templateName) {
       var config = []
       if (this.$refs.widget) {
         this.$refs.widget.forEach(element => {
@@ -226,13 +226,17 @@ export default {
         if (this.templateId) {
           param = {
             templateId: this.templateId,
-            templateInfo: JSON.stringify({ list: config })
+            templateInfo: JSON.stringify({ list: config }),
+            templateName: templateName
           }
         } else {
           param = {
-            templateInfo: JSON.stringify({ list: config })
+            templateInfo: JSON.stringify({ list: config }),
+            templateName: templateName
           }
         }
+        localStorage.setItem('config', JSON.stringify(param))
+        window.open('preview.html')
         preview(param)
           .then(res => {
             this.centerDialogVisible = true

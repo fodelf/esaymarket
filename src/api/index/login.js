@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-05 17:27:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 10:27:31
+ * @LastEditTime: 2019-08-26 19:23:58
  */
 import request from '@/utils/request'
 
@@ -15,9 +15,9 @@ export function login (params) {
     params: params
   })
 }
-export function SOLIDER_02 (params) {
+export function register (params) {
   return request({
-    url: '/compcag/SOLIDER_02',
+    url: '/api/user/register',
     method: 'POST',
     params: params
   })
