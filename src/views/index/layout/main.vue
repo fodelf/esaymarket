@@ -25,10 +25,10 @@
         <i class='iconfont icon-tuichudenglu' title="退出登录" @click="logout()"></i>
       </p>
     </div>
-    <el-main style="padding:0px"
+    <div class='main' style="padding:0px"
              ref='main'>
       <router-view />
-    </el-main>
+    </div>
   </div>
 </template>
 
@@ -68,6 +68,14 @@ export default {
 
     }
   },
+  // computed: {
+  //   activePath() {
+  //     const route = this.$route;
+  //     console.log(route);
+  //     // path = 
+  //     return path;
+  //   }
+  // },
   created(){
     this.$nextTick(()=>{
       this.userName = sessionStorage.getItem("userName");

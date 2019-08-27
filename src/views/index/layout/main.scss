@@ -28,8 +28,9 @@
             }
         }
     }
-    /deep/.el-main {
+    .main {
         height:calc(100% - 48px);
+        width:100%;
     }
     /deep/.el-menu-demo.el-menu--horizontal{
         float:left;
