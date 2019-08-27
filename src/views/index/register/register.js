@@ -6,6 +6,8 @@
  * @LastEditors: 吴文周
  * @LastEditTime: 2019-08-24 17:48:55
  */
+import { register } from '@/api/index/login.js'
+import md5 from 'js-md5'
 export default {
   name: 'Register',
   data () {
@@ -40,7 +42,18 @@ export default {
      * @description: 注册
      */
     register () {
+      let param = {
+        username: this.ruleForm.userName,
+        password: md5(this.ruleForm.password)
+      }
+      register(param).then((res) => {
+        console.log('注册成功')
+        this.$router.push({
+          path: '/login'
+        })
+      }).catch(() => {
 
+      })
     }
   }
 }

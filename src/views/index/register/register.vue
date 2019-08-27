@@ -23,7 +23,7 @@
                             <el-input placeholder="请输入用户名" v-model="ruleForm.userName"></el-input>
                         </el-form-item>
                         <el-form-item label="密码" prop="password">
-                            <el-input placeholder="请输入密码" v-model="ruleForm.password"></el-input>
+                            <el-input placeholder="请输入密码" v-model="ruleForm.password" show-password></el-input>
                         </el-form-item>
                         <el-form-item>
                             <button class='registerBtn' @click="register()">立即注册</button>

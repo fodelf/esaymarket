@@ -32,7 +32,7 @@
       <div class='rightDiv'>
 
       </div>
-      <el-form :label-position="labelPosition"
+      <!-- <el-form :label-position="labelPosition"
                label-width="80px"
                :model="form">
         <el-form-item label="用户名">
@@ -49,15 +49,15 @@
           <el-input v-model="form.password1"></el-input>
         </el-form-item>
         <el-button @click="login"> 注册</el-button>
-      </el-form>
+      </el-form> -->
     </div>
   </div>
 </template>
 
 <script>
-import { login, register } from '@/api/index/login.js'
-import { setToken } from '@/utils/auth'
-import md5 from 'js-md5'
+// import { login, register } from '@/api/index/login.js'
+// import { setToken } from '@/utils/auth'
+// import md5 from 'js-md5'
 export default {
   name: 'Main',
   data () {
@@ -99,31 +99,31 @@ export default {
      * @param {type}: 默认参数
      * @return {type}: 默认类型
      */
-    login () {
-      login(this.form).then((res) => {
-        setToken(res.token)
-        localStorage.setItem('userId', res.userId)
-      }).catch(() => {
+    // login () {
+    //   login(this.form).then((res) => {
+    //     setToken(res.token)
+    //     localStorage.setItem('userId', res.userId)
+    //   }).catch(() => {
 
-      })
-    },
+    //   })
+    // },
     /**
      * @name: login
      * @description: 登陆方法
      * @param {type}: 默认参数
      * @return {type}: 默认类型
      */
-    register () {
-      let param = {
-        username: this.form.username1,
-        password: md5(this.form.password1)
-      }
-      register(param).then((res) => {
-        console.log('注册成功')
-      }).catch(() => {
+    // register () {
+    //   let param = {
+    //     username: this.form.username1,
+    //     password: md5(this.form.password1)
+    //   }
+    //   register(param).then((res) => {
+    //     console.log('注册成功')
+    //   }).catch(() => {
 
-      })
-    }
+    //   })
+    // }
   }
 }
 </script>
