@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-05 18:57:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 17:54:09
+ * @LastEditTime: 2019-08-27 20:34:06
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -16,7 +16,7 @@ const Control = () => import('@/views/index/control/control.vue')
 const DashBoard = () => import('@/views/index/dashboard/dashboard.vue')
 Vue.use(Router)
 // 这是我的测试代码11
-export default new Router({
+const vueRouter = new Router({
   // mode: 'history',
   routes: [
     {
@@ -70,3 +70,23 @@ export default new Router({
     }
   ]
 })
+
+vueRouter.beforeEach(function (to, from, next) {
+  const nextRoute = ['主页', '控制台', '仪表盘']
+  const auth = localStorage.getItem('userId')
+  // 跳转至上述3个页面
+  if (nextRoute.indexOf(to.name) >= 0) {
+    // 未登录
+    if (!auth) {
+      vueRouter.push({ path: '/login' })
+    }
+  }
+  // 已登录的情况再去登录页，跳转至首页
+  if (to.name === 'login') {
+    if (auth.IsLogin) {
+      vueRouter.push({ path: '' })
+    }
+  }
+  next()
+})
+export default vueRouter

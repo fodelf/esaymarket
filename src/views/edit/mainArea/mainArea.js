@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 19:48:04
+ * @LastEditTime: 2019-08-27 19:28:31
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -235,16 +235,15 @@ export default {
             templateName: templateName
           }
         }
-        localStorage.setItem('config', JSON.stringify(param))
-        window.open('preview.html')
+        // localStorage.setItem('config', JSON.stringify(param))
+        // window.open('preview.html')
         preview(param)
           .then(res => {
             this.centerDialogVisible = true
             this.$nextTick(() => {
               document.getElementById('qrcode').innerHTML = ''
               let url =
-                'http://10.0.0.62:9090/preview.html?templateId=' +
-                res.templateId
+                'http://116.85.15.199/preview.html?templateId=' + res.templateId
               this.qrcode = new QRCode('qrcode', {
                 width: 100,
                 height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]

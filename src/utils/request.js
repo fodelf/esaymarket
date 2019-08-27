@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-14 19:09:48
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 15:45:36
+ * @LastEditTime: 2019-08-27 19:23:50
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
@@ -59,7 +59,7 @@ axios.interceptors.response.use(
     // if the custom code is not 000000, it is judged as an error.
     if (res.code !== '000000') {
       Message({
-        message: res.response_code_desc || 'error',
+        message: res.msg || 'error',
         type: 'error',
         duration: 5 * 1000
       })

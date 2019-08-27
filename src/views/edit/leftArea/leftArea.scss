@@ -41,12 +41,19 @@
         transition: all .45s;
         color: #777;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
 
         .text {
           font-size: 13px;
           text-align: center;
-          line-height: 47px;
+          // line-height: 47px;
+        }
+
+        .EmText {
+          display: block;
+          width: 10px;
+          height: 10px;
+          background: red
         }
       }
 
@@ -58,8 +65,4 @@
     }
 
   }
-}
-
-.sassssss {
-  height: 'ss';
 }

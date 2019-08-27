@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 20:20:56
+ * @LastEditTime: 2019-08-27 19:28:49
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -109,28 +109,28 @@ export default {
     } else {
       this._showInPC = false
     }
-    this.list = JSON.parse(
-      JSON.parse(localStorage.getItem('config')).templateInfo
-    ).list
-    this.$nextTick(() => {
-      this.$refs.widget.forEach((element, index) => {
-        this.setValues(element, slef.list[index]['attributes'])
-      })
-    })
-    // previewTemp({ templateId: templateId })
-    //   .then(res => {
-    //     slef.list = JSON.parse(res.templateInfo).list
-    //     slef.$nextTick(() => {
-    //       slef.$refs.widget.forEach((element, index) => {
-    //         slef.setValues(element, slef.list[index]['attributes'])
-    //       })
-    //     })
+    // this.list = JSON.parse(
+    //   JSON.parse(localStorage.getItem('config')).templateInfo
+    // ).list
+    // this.$nextTick(() => {
+    //   this.$refs.widget.forEach((element, index) => {
+    //     this.setValues(element, slef.list[index]['attributes'])
     //   })
-    //   .catch(() => {})
-    // let source = getUrlParam('source') ? getUrlParam('source') : 'defaut'
-    // visit({ templateId: templateId, comeSite: source })
-    //   .then(() => {})
-    //   .catch(() => {})
+    // })
+    previewTemp({ templateId: templateId })
+      .then(res => {
+        slef.list = JSON.parse(res.templateInfo).list
+        slef.$nextTick(() => {
+          slef.$refs.widget.forEach((element, index) => {
+            slef.setValues(element, slef.list[index]['attributes'])
+          })
+        })
+      })
+      .catch(() => {})
+    let source = getUrlParam('source') ? getUrlParam('source') : 'defaut'
+    visit({ templateId: templateId, comeSite: source })
+      .then(() => {})
+      .catch(() => {})
   }
   // wacth: {
   //   num () {

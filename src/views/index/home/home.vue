@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 19:32:28
+ * @LastEditTime: 2019-08-27 19:11:52
  -->
 <template>
   <div id="mainHome">
@@ -85,7 +85,7 @@ export default {
       this.$router.push({
         path: '/control'
       })
-    },
+    }
     // handleSelect (key, keyPath) {
     //   if (key === 2) {
     //     this.$router.push({ path: '/control' })

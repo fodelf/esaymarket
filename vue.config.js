@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-04 17:39:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 19:19:58
+ * @LastEditTime: 2019-08-27 20:16:35
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -57,7 +57,7 @@ module.exports = {
       // 当使用 title 选项时，
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
       title: '易推广',
-      chunks: ['chunk-vendors', 'chunk-common', 'index', 'runtime~index']
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     edit: {
       // page 的入口
@@ -69,7 +69,7 @@ module.exports = {
       // 当使用 title 选项时，
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
       title: '易推广',
-      chunks: ['chunk-vendors', 'chunk-common', 'edit', 'runtime~edit']
+      chunks: ['chunk-vendors', 'chunk-common', 'edit']
     },
     preview: {
       // page 的入口
@@ -81,7 +81,7 @@ module.exports = {
       // 当使用 title 选项时，
       // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
       title: '易推广',
-      chunks: ['chunk-vendors', 'chunk-common', 'preview', 'runtime~preview']
+      chunks: ['chunk-vendors', 'chunk-common', 'preview']
     }
   },
   publicPath: ispro ? '' : '/',
@@ -175,42 +175,42 @@ module.exports = {
         ])
         .end()
       // 资源分离与抽取规则
-      config.optimization.splitChunks({
-        // 默认值是30kb
-        minSize: 30000,
-        // 被多少模块共享
-        minChunks: 1,
-        // 所有异步请求不得超过5个
-        maxAsyncRequests: 5,
-        maxInitialRequests: 3,
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          chunk: {
-            test: resolve('src'),
-            chunks: 'all',
-            enforce: false,
-            priority: 10,
-            name: 'chunk-vendors',
-            reuseExistingChunk: true
-          },
-          common: {
-            chunks: 'all',
-            minChunks: 2,
-            name: 'chunk-common',
-            enforce: false,
-            priority: 5
-          }
-          // runtime: {
-          //   name: 'runtime~index',
-          //   reuseExistingChunk: true,
-          //   enforce: true,
-          //   priority: 5
-          // }
-        }
-      })
-      // 默认配置多页面模式保证可扩展性
-      config.optimization.runtimeChunk('multiple')
+      //   config.optimization.splitChunks({
+      //     // 默认值是30kb
+      //     minSize: 30000,
+      //     // 被多少模块共享
+      //     minChunks: 1,
+      //     // 所有异步请求不得超过5个
+      //     maxAsyncRequests: 5,
+      //     maxInitialRequests: 3,
+      //     cacheGroups: {
+      //       default: false,
+      //       vendors: false,
+      //       chunk: {
+      //         test: resolve('src'),
+      //         chunks: 'all',
+      //         enforce: false,
+      //         priority: 10,
+      //         name: 'chunk-vendors',
+      //         reuseExistingChunk: true
+      //       },
+      //       common: {
+      //         chunks: 'all',
+      //         minChunks: 2,
+      //         name: 'chunk-common',
+      //         enforce: false,
+      //         priority: 5
+      //       },
+      //       runtime: {
+      //         name: 'runtime',
+      //         reuseExistingChunk: true,
+      //         enforce: true,
+      //         priority: 5
+      //       }
+      //     }
+      //   })
+      //   // 默认配置多页面模式保证可扩展性
+      //   config.optimization.runtimeChunk('multiple')
     })
   }
 }
