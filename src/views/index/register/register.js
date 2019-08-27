@@ -42,17 +42,23 @@ export default {
      * @description: 注册
      */
     register () {
-      let param = {
-        username: this.ruleForm.userName,
-        password: md5(this.ruleForm.password)
-      }
-      register(param).then((res) => {
-        console.log('注册成功')
-        this.$router.push({
-          path: '/login'
-        })
-      }).catch(() => {
+      this.$refs.registerForm.validate((valid) => {
+        if (valid) {
+          let param = {
+            username: this.ruleForm.userName,
+            password: md5(this.ruleForm.password)
+          }
+          register(param).then((res) => {
+            console.log('注册成功')
+            this.$router.push({
+              path: '/login'
+            })
+          }).catch(() => {
 
+          })
+        } else {
+          return false
+        }
       })
     }
   }

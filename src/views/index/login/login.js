@@ -25,18 +25,21 @@ export default {
      * @description: 登录
      */
     login () {
-      login(this.form).then((res) => {
-        setToken(res.token)
-        sessionStorage.setItem('userId', res.userId)
-        this.$router.push({
-          path: '/'
-        })
-      }).catch(() => {
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          login(this.ruleForm).then((res) => {
+            setToken(res.token)
+            sessionStorage.setItem('userId', res.userId)
+            this.$router.push({
+              path: '/'
+            })
+          }).catch(() => {
 
+          })
+        } else {
+          return false
+        }
       })
-    //   this.$router.push({
-    //     path: '/'
-    //   })
     },
     /**
      * @name: goRegister
