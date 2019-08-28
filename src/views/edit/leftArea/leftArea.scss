@@ -42,6 +42,7 @@
         color: #777;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         .text {
           font-size: 13px;
@@ -50,10 +51,58 @@
         }
 
         .EmText {
+          background: url('../../../assets/img/emText.svg') center center no-repeat;
+        }
+
+        .EmHead {
+          background: url('../../../assets/img/emHead.svg') center center no-repeat;
+        }
+
+        .EmImg {
+          background: url('../../../assets/img/emImg.svg') center center no-repeat;
+        }
+
+        .EmSwipe {
+          background: url('../../../assets/img/emSwipe.svg') center center no-repeat;
+        }
+
+        .EmButton {
+          background: url('../../../assets/img/emButton.svg') center center no-repeat;
+        }
+
+        .EmVideo {
+          background: url('../../../assets/img/emVideo.svg') center center no-repeat;
+        }
+
+        .EmImgText {
+          background: url('../../../assets/img/emImgText.svg') center center no-repeat;
+        }
+
+        .EmLine {
+          background: url('../../../assets/img/emLine.svg') center center no-repeat;
+        }
+
+        .EmOnline {
+          background: url('../../../assets/img/emOnline.svg') center center no-repeat;
+        }
+
+        .EmQRcode {
+          background: url('../../../assets/img/emQRcode.svg') center center no-repeat;
+        }
+
+        .EmPhone {
+          background: url('../../../assets/img/emPhone.svg') center center no-repeat;
+        }
+
+        .EmForm {
+          background: url('../../../assets/img/emForm.svg') center center no-repeat;
+        }
+
+        .EmIcon {
           display: block;
-          width: 10px;
-          height: 10px;
-          background: red
+          width: 30px;
+          height: 30px;
+          background-size: contain;
         }
       }
 

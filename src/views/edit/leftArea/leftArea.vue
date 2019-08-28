@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:23
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 08:44:49
+ * @LastEditTime: 2019-08-28 08:12:25
  -->
 <template>
   <div class="leftArea">
@@ -26,7 +26,8 @@
                    class="drag-holder"
                    draggable="true"
                    @dragstart="dragstart($event,item)">
-                <i :class="item.widgetName" />
+                <i :class="item.widgetName"
+                   class="EmIcon" />
                 <span class="text">{{item.name}}</span>
               </div>
             </div>
@@ -42,7 +43,8 @@
                    class="drag-holder"
                    draggable="true"
                    @dragstart="dragstart($event,item)">
-                <i :class="item.widgetName" />
+                <i :class="item.widgetName"
+                   class="EmIcon" />
                 <span class="text">{{item.name}}</span>
               </div>
             </div>
