@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-27 19:10:55
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-28 07:06:46
+ * @LastEditTime: 2019-08-28 20:22:08
  -->
 <template>
   <div class='login'>
@@ -35,6 +35,7 @@
           <el-form ref="loginForm"
                    :model="ruleForm"
                    :rules="rules"
+                   @submit.native.prevent
                    label-width="80px">
             <el-form-item label="用户名"
                           prop="userName">

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-27 19:10:55
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-28 10:11:05
+ * @LastEditTime: 2019-08-28 18:59:19
  */
 import { login } from '@/api/index/login.js'
 import { setToken } from '@/utils/auth'
@@ -41,8 +41,8 @@ export default {
           login(param)
             .then(res => {
               setToken(res.token)
-              sessionStorage.setItem('userId', res.userId)
-              sessionStorage.setItem('userName', this.ruleForm.userName)
+              localStorage.setItem('userId', res.userId)
+              localStorage.setItem('userName', this.ruleForm.userName)
               this.$router.push({
                 path: '/'
               })
