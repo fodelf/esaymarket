@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 17:51:28
+ * @LastEditTime: 2019-08-27 22:04:32
  -->
 <template>
   <div class='dashboard clearfix'>
@@ -27,23 +27,23 @@
         </el-breadcrumb>
         <el-form>
           <el-form-item>
-            <el-input placeholder="站点名称" v-model="siteName"></el-input>
+            <el-input placeholder="站点名称"
+                      v-model="siteName"></el-input>
           </el-form-item>
           <el-form-item>
-             <el-date-picker
-                v-model="value"
-                type="daterange"
-                align="right"
-                unlink-panels
-                range-separator="至"
-                start-placeholder="开始日期"
-                end-placeholder="结束日期"
-                :picker-options="pickerOptions">
-              </el-date-picker>
+            <el-date-picker v-model="value"
+                            type="daterange"
+                            align="right"
+                            unlink-panels
+                            range-separator="至"
+                            start-placeholder="开始日期"
+                            end-placeholder="结束日期"
+                            :picker-options="pickerOptions">
+            </el-date-picker>
           </el-form-item>
         </el-form>
       </div>
-      <div class='floorList'> 
+      <div class='floorList'>
         <div class="confiditions">
           <p>概况</p>
         </div>
@@ -72,35 +72,35 @@ export default {
   name: 'Main',
   data () {
     return {
-      siteNme:"",
+      siteNme: '',
       pickerOptions: {
-          shortcuts: [{
-            text: '最近一周',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: '最近一个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: '最近三个月',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
-        },
-        value:""
+        shortcuts: [{
+          text: '最近一周',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近一个月',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+            picker.$emit('pick', [start, end])
+          }
+        }, {
+          text: '最近三个月',
+          onClick (picker) {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+            picker.$emit('pick', [start, end])
+          }
+        }]
+      },
+      value: ''
     }
   },
   components: {

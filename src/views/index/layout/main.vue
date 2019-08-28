@@ -4,11 +4,11 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-18 17:47:38
+ * @LastEditTime: 2019-08-28 08:04:41
  -->
 <template>
   <div style="height:100%"
-                id='contentMain'>
+       id='contentMain'>
     <div class='header'>
       <span class='logoTit'>易推广</span>
       <el-menu :default-active="activePath"
@@ -16,17 +16,26 @@
                mode="horizontal"
                @select="handleSelect">
         <el-menu-item index="/">产品</el-menu-item>
-        <el-menu-item index="" disabled>解决方案（暂未开放）</el-menu-item>
-        <el-menu-item index="" disabled>研究院（暂未开放）</el-menu-item>
+        <el-menu-item index=""
+                      disabled>解决方案（暂未开放）</el-menu-item>
+        <el-menu-item index=""
+                      disabled>研究院（暂未开放）</el-menu-item>
         <el-menu-item index="/control">控制台</el-menu-item>
       </el-menu>
-      <p>
+      <p v-if="userName">
         <span>欢迎你！<em>{{userName}}</em></span>
-        <i class='iconfont icon-tuichudenglu' title="退出登录" @click="logout()"></i>
+        <i class='iconfont icon-tuichudenglu'
+           title="退出登录"
+           @click="logout()"></i>
+      </p>
+      <p v-else>
+        <span>登陆</span>
+        <span>注册</span>
       </p>
     </div>
-    <div class='main' style="padding:0px"
-             ref='main'>
+    <div class='main'
+         style="padding:0px"
+         ref='main'>
       <router-view />
     </div>
   </div>
@@ -37,34 +46,31 @@ export default {
   name: 'Main',
   data () {
     return {
-      userName:"",
-      activePath:"/"
+      userName: '',
+      activePath: '/'
     }
   },
   components: {
-  },
-  created () {
-
   },
   mounted () {
 
   },
   methods: {
-     /**
-     * @name: handleSelect
-     * @description: 路由跳转
-     */
-    handleSelect(key,path){
-      this.activePath = key;
+    /**
+    * @name: handleSelect
+    * @description: 路由跳转
+    */
+    handleSelect (key, path) {
+      this.activePath = key
       this.$router.push({
-        path:key
+        path: key
       })
     },
     /**
      * @name: logout
      * @description: 退出登录
      */
-    logout(){
+    logout () {
 
     }
   },
@@ -72,13 +78,13 @@ export default {
   //   activePath() {
   //     const route = this.$route;
   //     console.log(route);
-  //     // path = 
+  //     // path =
   //     return path;
   //   }
   // },
-  created(){
-    this.$nextTick(()=>{
-      this.userName = sessionStorage.getItem("userName");
+  created () {
+    this.$nextTick(() => {
+      this.userName = sessionStorage.getItem('userName')
     })
   }
 }

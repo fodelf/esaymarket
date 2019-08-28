@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-21 15:40:46
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 17:48:55
+ * @LastEditTime: 2019-08-27 22:06:52
  */
 import { queryTemplateList } from '@/api/index/control.js'
 export default {
@@ -43,6 +43,15 @@ export default {
     gotoEdit (id) {
       let url = 'edit.html?templateId=' + id
       window.open(url)
+    },
+    /**
+     * @name: open
+     * @description: 新增到编辑
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    open () {
+      window.open('edit.html')
     }
   }
 }

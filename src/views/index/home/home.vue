@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 19:11:52
+ * @LastEditTime: 2019-08-27 22:42:54
  -->
 <template>
   <div id="mainHome">
@@ -51,6 +51,8 @@
         <el-button @click="login"> 注册</el-button>
       </el-form> -->
     </div>
+    <div class="footer">免责声明：当前项目为初级学习阶段与git开源仿照项目无异，有借用第三方的设计，为此申明免责。
+      严肃告知：落地页中不得出现危害，社会道德与中国法律的文字与图片否则后果自负</div>
   </div>
 </template>
 

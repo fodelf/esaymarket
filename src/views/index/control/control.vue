@@ -4,15 +4,19 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 18:28:10
+ * @LastEditTime: 2019-08-27 22:49:10
  -->
 <template>
   <div class="production">
     <div class='topPro clearfix'>
+      <!-- <el-button type="primary"
+                 class='addSiteBtn'
+                 icon="el-icon-plus"
+                 @click="dialogVisible=true">新增站点</el-button> -->
       <el-button type="primary"
                  class='addSiteBtn'
                  icon="el-icon-plus"
-                 @click="dialogVisible=true">新增站点</el-button>
+                 @click="open">新增站点</el-button>
       <el-form ref="form"
                :model="form">
         <el-form-item>
@@ -48,10 +52,14 @@
       <div class='addSite'>
         <div class='noSiteBg'></div>
         <p>当前暂无站点哦~</p>
+        <!-- <el-button type="primary"
+                   class='addSiteBtn'
+                   icon="el-icon-plus"
+                   @click="dialogVisible=true">新增第一个站点</el-button> -->
         <el-button type="primary"
                    class='addSiteBtn'
                    icon="el-icon-plus"
-                   @click="dialogVisible=true">新增第一个站点</el-button>
+                   @click="open">新增第一个站点</el-button>
       </div>
       <ul>
         <li v-for="(item,index) in templateList"
@@ -63,7 +71,7 @@
           <span>注册:{{item.registerCount}}</span></li>
       </ul>
     </div>
-    <el-dialog title="新建站点"
+    <!-- <el-dialog title="新建站点"
                class="clearfix"
                center
                :visible.sync="dialogVisible">
@@ -73,7 +81,7 @@
       <div class="createBox createTem">
         <span>使用模板创建</span>
       </div>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 

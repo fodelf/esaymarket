@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-05 18:57:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 20:34:06
+ * @LastEditTime: 2019-08-28 08:04:54
  */
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -72,7 +72,7 @@ const vueRouter = new Router({
 })
 
 vueRouter.beforeEach(function (to, from, next) {
-  const nextRoute = ['主页', '控制台', '仪表盘']
+  const nextRoute = ['控制台', '仪表盘']
   const auth = localStorage.getItem('userId')
   // 跳转至上述3个页面
   if (nextRoute.indexOf(to.name) >= 0) {

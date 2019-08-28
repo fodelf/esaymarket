@@ -1,90 +1,109 @@
-
 #mainHome {
-    width:100%;
-    height:100%;
-    background:url(../../../assets/img/banner.jpg) no-repeat center;
-    // .logoNav {
-    //     padding: 0 50px;
-    //     .logoTit {
-    //         float:left;
-    //         span {
-    //             color:#fff;
-    //             font-size:24px;
-    //             line-height:60px;
-    //         }
-    //     }
-    // }
-    .startCon {
-        padding: 0 50px;
-        width:calc(100% - 100px);
-        height:calc(100% - 10px);
-        display:flex;
-        align-items: center;
-        .leftDiv {
-            float:left;
-            width: 419px;
-            margin-right:81px;
-            .line1 {
-                display:block;
-                width:174px;
-                height: 12px;
-                background-color: #00f2fe;
-                // margin-top: 72px;
-            }
-            p { 
-                color: #fff;
-                font-size: 56px;
-                line-height: 75px;
-                margin: 19px 0;
-                letter-spacing: 3px;
-            }
-            .line2 {
-                display:block;
-                width: 112px;
-                height: 12px;
-                background-color: #00f2fe;
-                float:right;
-                // margin-top: 72px;
-            }
-            .startBtn {
-                width: 192px;
-                height: 48px;
-                margin-top:50px;
-                border: none;
-                border-radius: 24px;
-                background-color: #fff;
-                font-size: 20px;
-                line-height: 28px;
-                color: #3d70ea;
-                cursor: pointer;
-            }
-            
-        }
-        .rightDiv {
-            float:right;
-            width:calc(100% - 500px);
-            height:100%;
-            background:url(../../../assets/img/operateBg.png) no-repeat center;
-            background-size:contain;
-        }
+  width: 100%;
+  height: 100%;
+  background: url(../../../assets/img/banner.jpg) no-repeat center;
+
+  // .logoNav {
+  //     padding: 0 50px;
+  //     .logoTit {
+  //         float:left;
+  //         span {
+  //             color:#fff;
+  //             font-size:24px;
+  //             line-height:60px;
+  //         }
+  //     }
+  // }
+  .startCon {
+    padding: 0 50px;
+    width: calc(100% - 100px);
+    height: calc(100% - 10px);
+    display: flex;
+    align-items: center;
+
+    .leftDiv {
+      float: left;
+      width: 419px;
+      margin-right: 81px;
+
+      .line1 {
+        display: block;
+        width: 174px;
+        height: 12px;
+        background-color: #00f2fe;
+        // margin-top: 72px;
+      }
+
+      p {
+        color: #fff;
+        font-size: 56px;
+        line-height: 75px;
+        margin: 19px 0;
+        letter-spacing: 3px;
+      }
+
+      .line2 {
+        display: block;
+        width: 112px;
+        height: 12px;
+        background-color: #00f2fe;
+        float: right;
+        // margin-top: 72px;
+      }
+
+      .startBtn {
+        width: 192px;
+        height: 48px;
+        margin-top: 50px;
+        border: none;
+        border-radius: 24px;
+        background-color: #fff;
+        font-size: 20px;
+        line-height: 28px;
+        color: #3d70ea;
+        cursor: pointer;
+      }
+
     }
-    /deep/.el-menu-demo.el-menu--horizontal {
-        background:none;
-        border:none;
-        float:right;
-        .el-menu-item {
-            color:#fff;
-            padding:0;
-            margin-left:40px;
-        }
-        .el-menu-item.is-active {
-            border-bottom: 3px solid #fff;
-            background:none;
-            color:#fff;
-        }
-        .el-menu-item:hover {
-            background:none;
-            color:#fff;
-        }
+
+    .rightDiv {
+      float: right;
+      width: calc(100% - 500px);
+      height: 100%;
+      background: url(../../../assets/img/operateBg.png) no-repeat center;
+      background-size: contain;
     }
+  }
+
+  /deep/.el-menu-demo.el-menu--horizontal {
+    background: none;
+    border: none;
+    float: right;
+
+    .el-menu-item {
+      color: #fff;
+      padding: 0;
+      margin-left: 40px;
+    }
+
+    .el-menu-item.is-active {
+      border-bottom: 3px solid #fff;
+      background: none;
+      color: #fff;
+    }
+
+    .el-menu-item:hover {
+      background: none;
+      color: #fff;
+    }
+  }
+
+  .footer {
+    height: 39px;
+    text-align: center;
+    background: #fff;
+    font-size: 14px;
+    color: #606266;
+    line-height: 39px;
+  }
 }
