@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 19:38:56
+ * @LastEditTime: 2019-08-29 22:04:31
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -227,12 +227,14 @@ export default {
           param = {
             templateId: this.templateId,
             templateInfo: JSON.stringify({ list: config }),
-            templateName: templateName
+            templateName: templateName,
+            isPreview: true
           }
         } else {
           param = {
             templateInfo: JSON.stringify({ list: config }),
-            templateName: templateName
+            templateName: templateName,
+            isPreview: true
           }
         }
         // localStorage.setItem('config', JSON.stringify(param))
@@ -258,6 +260,54 @@ export default {
 
         // localStorage.setItem('config', JSON.stringify(config))
         // window.open('preview.html')
+      } else {
+        this.$message({
+          message: '请拖拽组件',
+          type: 'error',
+          duration: 5 * 1000
+        })
+      }
+    },
+    /**
+     * @name: getConfigSave
+     * @description: 默认描述
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    getConfigSave (templateName) {
+      var config = []
+      if (this.$refs.widget) {
+        this.$refs.widget.forEach(element => {
+          config.push({
+            widgetName: element.widgetName,
+            attributes: this.getValues(element)
+          })
+        })
+        var param = {}
+        if (this.templateId) {
+          param = {
+            templateId: this.templateId,
+            templateInfo: JSON.stringify({ list: config }),
+            templateName: templateName,
+            isPreview: false
+          }
+        } else {
+          param = {
+            templateInfo: JSON.stringify({ list: config }),
+            templateName: templateName,
+            isPreview: false
+          }
+        }
+        // localStorage.setItem('config', JSON.stringify(param))
+        // window.open('preview.html')
+        preview(param)
+          .then(res => {
+            this.$message({
+              message: '保存成功',
+              type: 'success'
+            })
+          })
+          .catch(() => {})
       } else {
         this.$message({
           message: '请拖拽组件',

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-21 15:40:46
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 19:29:44
+ * @LastEditTime: 2019-08-29 22:23:18
  */
 import { queryTemplateList } from '@/api/index/control.js'
 export default {
@@ -54,6 +54,7 @@ export default {
     init () {
       let param = {
         userId: localStorage.getItem('userId') * 1,
+        isPreview: false,
         pageNum: 1,
         pageSize: 10
       }

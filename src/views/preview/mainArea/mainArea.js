@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 19:11:22
+ * @LastEditTime: 2019-08-29 22:13:15
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -119,6 +119,7 @@ export default {
     // })
     previewTemp({ templateId: templateId })
       .then(res => {
+        document.getElementsByTagName('title')[0].innerText = JSON.parse(res.templateInfo).templateName
         slef.list = JSON.parse(res.templateInfo).list
         slef.$nextTick(() => {
           slef.$refs.widget.forEach((element, index) => {

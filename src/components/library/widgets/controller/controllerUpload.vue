@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 15:10:46
+ * @LastEditTime: 2019-08-29 23:09:16
  -->
 <template>
   <el-upload class="upload-demo"
@@ -47,6 +47,22 @@ export default {
     handleRemove (file, fileList) {
       this.value = ''
       this.changeValue()
+    },
+    setValue (value) {
+      console.log(value)
+      let index = value.reverse().indexOf('/')
+      var str = value.substring(index).reverse()
+      console.log(str)
+      this.fileList = [{ name: 'food.jpeg', url: value }]
+    }
+  },
+  created () {
+    var value = this.mes.defaultValue
+    if (value) {
+      let index = value.split('').reverse().join('').indexOf('/')
+      var str = value.substring(index).split('').reverse().join('')
+      console.log(str)
+      this.fileList = [{ name: str, url: value }]
     }
   }
 }

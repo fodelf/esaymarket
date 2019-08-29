@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 19:57:47
+ * @LastEditTime: 2019-08-29 22:02:20
  -->
 <template>
   <div id='app'
@@ -13,7 +13,8 @@
       <el-header height='56'
                  style="padding:0px">
         <headerArea ref='headerArea'
-                    @getConfig='getConfig'></headerArea>
+                    @getConfig='getConfig'
+                    @getConfigSave='getConfigSave'></headerArea>
       </el-header>
       <el-container>
         <el-aside v-show='isShowLeft'
@@ -71,6 +72,9 @@ export default {
     },
     getConfig (templateName) {
       this.$refs.mainArea.getConfig(templateName)
+    },
+    getConfigSave (templateName) {
+      this.$refs.mainArea.getConfigSave(templateName)
     },
     clearAttr () {
       this.$refs.rightArea.clearAttr()

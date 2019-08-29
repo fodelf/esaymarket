@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:32:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-24 18:23:08
+ * @LastEditTime: 2019-08-29 22:54:01
  */
 import { uuid } from '@/utils/index.js'
 //  读取配置文件

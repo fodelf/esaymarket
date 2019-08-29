@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 20:02:35
+ * @LastEditTime: 2019-08-29 22:23:22
  -->
 <template>
   <div class="production">
@@ -72,9 +72,9 @@
             <span class='name'
                   :title="item.templateName">{{item.templateName}}</span>
             <span class='url'
-                  :title="item.templateUrl">http://easymarket.chehe88.com/?preview.html?templateId={{item.templateId}}</span>
+                  :title="item.templateUrl">http://easymarket.chehe88.com/preview.html?templateId={{item.templateId}}</span>
             <p class='locationUrl clearfix'>
-              <span v-clipboard:copy="item.templateUrl"
+              <span v-clipboard:copy="'http://easymarket.chehe88.com/preview.html?templateId=' + item.templateId"
                     v-clipboard:success="onCopy"
                     v-clipboard:error="onError"><i class='iconfont icon-fuzhi'></i>复制链接</span>
               <span><i class='iconfont icon-Group-'></i>二维码</span>

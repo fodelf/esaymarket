@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 08:30:25
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 18:57:45
+ * @LastEditTime: 2019-08-29 22:02:33
  -->
 <template>
   <div class="headerArea">
@@ -35,7 +35,7 @@
     <!-- <div id="qrcode">二维码生成的位置</div> -->
     <div class="pubulish-bar flex-row publish-bar">
       <a class="btnStyle iconBtn cursor-pointer"
-         @click="save"><i class="fz32 icon-Save"></i><span>保存未</span></a>
+         @click="save"><i class="fz32 icon-Save"></i><span>保存</span></a>
       <a class="btnStyle iconBtn cursor-pointer"><i class="fz32 icon-Yulan"
            @click="preview"></i>
         <span @click="preview">预览</span>
@@ -49,7 +49,7 @@
   </div>
 </template>
 <script>
-import QRCode from 'qrcodejs2'
+// import QRCode from 'qrcodejs2'
 export default {
   name: 'headerArea',
 
@@ -150,15 +150,7 @@ export default {
      * @return {type}: 默认类型
      */
     save () {
-      document.getElementById('qrcode').innerHTML = ''
-      this.qrcode = new QRCode('qrcode', {
-        width: 100,
-        height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
-        text: 'https://www.baidu.com/' // 二维码内容
-        // render: 'canvas' // 设置渲染方式（有两种方式 table和canvas，默认是canvas）
-        // background: '#f0f'
-        // foreground: '#ff0'
-      })
+      this.$emit('getConfigSave', this.temName)
     }
   },
   mounted () { }
