@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-06 08:54:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 08:56:16
+ * @LastEditTime: 2019-08-29 19:57:47
  -->
 <template>
   <div id='app'
@@ -69,8 +69,8 @@ export default {
       console.log(mes)
       this.$refs.mainArea.changeValue(mes)
     },
-    getConfig () {
-      this.$refs.mainArea.getConfig()
+    getConfig (templateName) {
+      this.$refs.mainArea.getConfig(templateName)
     },
     clearAttr () {
       this.$refs.rightArea.clearAttr()
