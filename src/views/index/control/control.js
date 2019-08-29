@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-21 15:40:46
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-28 20:55:04
+ * @LastEditTime: 2019-08-29 19:29:44
  */
 import { queryTemplateList } from '@/api/index/control.js'
 export default {
@@ -15,28 +15,27 @@ export default {
       site: '全部站点',
       dialogVisible: false,
       templateList: [
-        {
-          templateName: '111',
-          templateUrl: 'https://www.ilanx0.net/TSD602qc',
-          templateId: '222',
-          viewCount: 33,
-          registerCount: 100
-        },
-        {
-          templateName: '111',
-          templateUrl: 'https://www.ilanx0.net/TSD602qc',
-          templateId: '222',
-          viewCount: 33,
-          registerCount: 100
-        },
-        {
-          templateName: '111',
-          templateUrl: 'https://www.ilanx0.net/TSD602qc',
-          templateId: '222',
-          viewCount: 33,
-          registerCount: 100
-        }
-
+        // {
+        //   templateName: '111',
+        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
+        //   templateId: '222',
+        //   viewCount: 33,
+        //   registerCount: 100
+        // },
+        // {
+        //   templateName: '111',
+        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
+        //   templateId: '222',
+        //   viewCount: 33,
+        //   registerCount: 100
+        // },
+        // {
+        //   templateName: '111',
+        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
+        //   templateId: '222',
+        //   viewCount: 33,
+        //   registerCount: 100
+        // }
       ]
     }
   },
@@ -94,9 +93,7 @@ export default {
      * @param {type}: String
      * @return {type}: 默认类型
      */
-    deleteTem (id) {
-
-    },
+    deleteTem (id) {},
     /**
      * @name: onCopy
      * @description: 复制链接成功

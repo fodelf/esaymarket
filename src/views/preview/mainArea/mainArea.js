@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 19:28:49
+ * @LastEditTime: 2019-08-29 19:11:22
  */
 // import { uuid } from '@/utils/index.js'
 // //  读取配置文件
@@ -96,7 +96,7 @@ export default {
       this._showInPC = true
       this.$nextTick(() => {
         document.getElementById('qrcode').innerHTML = ''
-        let url = window.location.href
+        let url = 'http://' + window.location.href
         this.qrcode = new QRCode('qrcode', {
           width: 120,
           height: 120, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]

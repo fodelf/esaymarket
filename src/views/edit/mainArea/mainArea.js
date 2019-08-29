@@ -243,7 +243,7 @@ export default {
             this.$nextTick(() => {
               document.getElementById('qrcode').innerHTML = ''
               let url =
-                'http://116.85.15.199/preview.html?templateId=' + res.templateId
+                'http://easymarket.chehe88.com/preview.html?templateId=' + res.templateId
               this.qrcode = new QRCode('qrcode', {
                 width: 100,
                 height: 100, // 高度  [图片上传失败...(image-9ad77b-1525851843730)]
