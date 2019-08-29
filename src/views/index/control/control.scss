@@ -1,6 +1,7 @@
 .production {
     width:100%;
     height:100%;
+    overflow:auto;
     background:#f8fbff;
     .topPro {
         height:32px;
@@ -15,31 +16,162 @@
         height:calc(100% - 99px);
         width:calc(100% - 100px);
         margin:0 50px;
-        background:#fff;
-        display:flex;
-        align-items:center;
-        justify-content: center;
         .addSite {
-            width:210px;
-            text-align:center;
-            .noSiteBg {
+            width:100%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            background:#fff;
+            .addContent {
                 width:210px;
-                height:140px;
-                background:url(../../../assets/img/null_site.png) no-repeat center;
+                text-align:center;
+                .noSiteBg {
+                    width:210px;
+                    height:140px;
+                    background:url(../../../assets/img/null_site.png) no-repeat center;
+                }
+                p {
+                    height:20px;
+                    line-height:20px;
+                    margin-top:15px;
+                    margin-bottom:15px;
+                    font-size:14px;
+                    color:#888;
+                }
+                .addSiteBtn {
+                    height:32px;
+                    padding:0 20px;
+                }
             }
-            p {
-                height:20px;
-                line-height:20px;
-                margin-top:15px;
-                margin-bottom:15px;
-                font-size:14px;
-                color:#888;
-            }
-            .addSiteBtn {
-                height:32px;
-                padding:0 20px;
-            }
+        }
+        .siteList {
+            width:100%;
+            height:100%;
+            .site {
+                float:left;
+                width:calc(50% - 52px);
+                margin-right:20px;
+                margin-bottom:20px;
+                height:268px;
+                padding:16px;
+                background:#fff;
+                box-shadow: 0 8px 16px 0 rgba(80,110,255,.1);
+                border-radius:5px;
+                .leftSide {
+                    float:left;
+                    width:108px;
+                    height:calc(100% - 60px);
+                    padding:30px;
+                    margin-right:16px;
+                    background:#eee;
+                    .sideBg {
+                        width:100%;
+                        height:100%;
+                        background:url(../../../assets/img/broadCastbg.svg) no-repeat center;
+                        background-size:contain;
+                    }
+                }
+                .rightSide {
+                    float:left;
+                    width:calc(100% - 184px);
+                    height:100%;
+                    .name {
+                        width: 100%;
+                        display: block;
+                        color: #595959;
+                        font-size: 14px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        height:20px;
+                        line-height:20px;
+                    }
+                    .url {
+                        width:100%;
+                        height: 14px;
+                        line-height:14px;
+                        margin-top: 5px;
+                        text-align: left;
+                        font-size: 14px;
+                        color: #bfbfbf;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        display:block;
+                    }
+                    .locationUrl {
+                        height:18px;
+                        margin-top:8px;
+                        span {
+                            float:left;
+                            margin-right: 12px;
+                            height: 18px;
+                            line-height: 18px;
+                            color: #888;
+                            cursor: pointer;
+                            font-size:14px;
+                            i {
+                                font-size:18px;
+                                margin-right:6px;
+                            }
+                        }
+                    }
+                    .operation {
+                        height:32px;
+                        margin-top:40px;
+                        /deep/.el-button {
+                            padding:8px 20px;
+                        }
+                    }
+                    .bigBox {
+                        height:calc(100% - 147px);
+                        margin-top:10px;
+                        .blockBox {
+                            float:left;
+                            width: 30%;
+                            margin-right:15px;
+                            height:100%;
+                            background: hsla(0,0%,75%,.1);
+                            text-align: center;
+                            color: #595959;
+                            display:flex;
+                            align-items:center;
+                            justify-content: center;
+                            cursor:pointer;
+                            em {
+                                display:block;
+                                text-align:center;
+                                height: 14px;
+                                font-size: 14px;
+                                line-height: 14px;
+                                color: #bfbfbf;
+                                margin-bottom:15px;
+                            }
+                            span {
+                                display:block;
+                                width:100%;
+                                max-width:115px;
+                                text-align:center;
+                                height:22px;
+                                line-height: 22px;
+                                font-size: 22px;
+                                color: #595959;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
 
+                            }
+                            span:hover {
+                                color:#1095fe;
+                            }
+                        }
+                    }
+                }
+            }
+            .site:nth-child(2n) {
+                margin-right:0px;
+            }
         }
     }
 }

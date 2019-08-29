@@ -29,8 +29,8 @@
            @click="logout()"></i>
       </p>
       <p v-else>
-        <span>登陆</span>
-        <span>注册</span>
+        <span class='toLogin' @click="toLogin()">登陆</span>
+        <span @click="toRegister()">注册</span>
       </p>
     </div>
     <div class='main'
@@ -61,7 +61,8 @@ export default {
     * @description: 路由跳转
     */
     handleSelect (key, path) {
-      this.activePath = key
+      this.activePath = key;
+      console.log(key);
       this.$router.push({
         path: key
       })
@@ -72,7 +73,25 @@ export default {
      */
     logout () {
 
-    }
+    },
+    /**
+     * @name: toLogin
+     * @description: 去登录页
+     */
+    toLogin(){
+      this.$router.push({
+        path:"/login"
+      })
+    },
+    /**
+     * @name: toLogin
+     * @description: 去注册页
+     */
+    toRegister(){
+      this.$router.push({
+        path:"/register"
+      })
+    },
   },
   // computed: {
   //   activePath() {
