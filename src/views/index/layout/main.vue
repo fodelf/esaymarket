@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-28 08:04:41
+ * @LastEditTime: 2019-08-28 18:59:43
  -->
 <template>
   <div style="height:100%"
@@ -103,7 +103,7 @@ export default {
   // },
   created () {
     this.$nextTick(() => {
-      this.userName = sessionStorage.getItem('userName')
+      this.userName = localStorage.getItem('userName')
     })
   }
 }
