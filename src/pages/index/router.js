@@ -72,21 +72,21 @@ const vueRouter = new Router({
 })
 
 vueRouter.beforeEach(function (to, from, next) {
-  const nextRoute = ['控制台', '仪表盘']
-  const auth = localStorage.getItem('userId')
-  // 跳转至上述3个页面
-  if (nextRoute.indexOf(to.name) >= 0) {
-    // 未登录
-    if (!auth) {
-      vueRouter.push({ path: '/login' })
-    }
-  }
-  // 已登录的情况再去登录页，跳转至首页
-  if (to.name === 'login') {
-    if (auth.IsLogin) {
-      vueRouter.push({ path: '' })
-    }
-  }
+  // const nextRoute = ['控制台', '仪表盘']
+  // const auth = localStorage.getItem('userId')
+  // // 跳转至上述3个页面
+  // if (nextRoute.indexOf(to.name) >= 0) {
+  //   // 未登录
+  //   if (!auth) {
+  //     vueRouter.push({ path: '/login' })
+  //   }
+  // }
+  // // 已登录的情况再去登录页，跳转至首页
+  // if (to.name === 'login') {
+  //   if (auth.IsLogin) {
+  //     vueRouter.push({ path: '' })
+  //   }
+  // }
   next()
 })
 export default vueRouter

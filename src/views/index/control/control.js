@@ -14,7 +14,30 @@ export default {
       time: '默认排序',
       site: '全部站点',
       dialogVisible: false,
-      templateList: []
+      templateList: [
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        },
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        },
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        }
+
+      ]
     }
   },
   components: {},
@@ -24,7 +47,7 @@ export default {
   mounted () {},
   methods: {
     /**
-     * @name: query
+     * @name: init
      * @description: 查询列表
      * @param {type}: 默认参数
      * @return {type}: 默认类型
@@ -40,9 +63,59 @@ export default {
         self.templateList = res.list
       })
     },
+    /**
+     * @name: gotoEdit
+     * @description: 编辑站点
+     * @param {type}: String
+     * @return {type}: 默认类型
+     */
     gotoEdit (id) {
       let url = 'edit.html?templateId=' + id
       window.open(url)
+    },
+    /**
+     * @name: gotoData
+     * @description: 查看数据
+     * @param {type}: String
+     * @return {type}: 默认类型
+     */
+    gotoData (item) {
+      this.$router.push({
+        path: '/dashBoard',
+        query: {
+          temId: item.templateId,
+          temName: item.templateName
+        }
+      })
+    },
+    /**
+     * @name: deleteTem
+     * @description: 删除站点
+     * @param {type}: String
+     * @return {type}: 默认类型
+     */
+    deleteTem (id) {
+
+    },
+    /**
+     * @name: onCopy
+     * @description: 复制链接成功
+     */
+    onCopy () {
+      this.$message({
+        message: '站点链接复制成功！',
+        type: 'success'
+      })
+    },
+    /**
+     * @name: onCopy
+     * @description: 复制链接失败
+     */
+    onError () {
+      this.$message({
+        message: '站点链接复制失败！',
+        type: 'error'
+      })
     },
     /**
      * @name: open

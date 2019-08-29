@@ -16,11 +16,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Vant from 'vant'
 import 'vant/lib/dialog/style'
 import '@/assets/iconfont/iconfont.css'
+import VueClipboard from 'vue-clipboard2'
 Vue.prototype._GLOBAL = _global
 Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.use(ElementUI)
 Vue.use(Vant)
+Vue.use(VueClipboard)
 
 new Vue({
   router,

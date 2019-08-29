@@ -17,6 +17,7 @@
         p {
             float:right;
             color:#fff;
+            font-size:16px;
             em {
                 color:#1095fe;
             }
@@ -25,6 +26,9 @@
                 font-size:24px;
                 cursor:pointer;
                 margin-left:20px;
+            }
+            .toLogin {
+                margin-right:15px;
             }
         }
     }
