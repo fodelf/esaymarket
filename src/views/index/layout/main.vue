@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-28 18:59:43
+ * @LastEditTime: 2019-08-29 19:50:48
  -->
 <template>
   <div style="height:100%"
@@ -29,7 +29,8 @@
            @click="logout()"></i>
       </p>
       <p v-else>
-        <span class='toLogin' @click="toLogin()">登陆</span>
+        <span class='toLogin'
+              @click="toLogin()">登陆</span>
         <span @click="toRegister()">注册</span>
       </p>
     </div>
@@ -61,8 +62,8 @@ export default {
     * @description: 路由跳转
     */
     handleSelect (key, path) {
-      this.activePath = key;
-      console.log(key);
+      this.activePath = key
+      console.log(key)
       this.$router.push({
         path: key
       })
@@ -72,26 +73,31 @@ export default {
      * @description: 退出登录
      */
     logout () {
-
+      localStorage.setItem('userName', '')
+      localStorage.setItem('userId', '')
+      this.userName = localStorage.getItem('userName')
+      this.$router.push({
+        path: '/'
+      })
     },
     /**
      * @name: toLogin
      * @description: 去登录页
      */
-    toLogin(){
+    toLogin () {
       this.$router.push({
-        path:"/login"
+        path: '/login'
       })
     },
     /**
      * @name: toLogin
      * @description: 去注册页
      */
-    toRegister(){
+    toRegister () {
       this.$router.push({
-        path:"/register"
+        path: '/register'
       })
-    },
+    }
   },
   // computed: {
   //   activePath() {

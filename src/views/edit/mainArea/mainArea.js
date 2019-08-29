@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 19:28:31
+ * @LastEditTime: 2019-08-29 19:38:56
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -371,6 +371,8 @@ export default {
               self.$refs.widget.forEach((element, index) => {
                 self.setValues(element, self.list[index]['attributes'])
                 self.cacheWiget[element.id] = element
+                element.$_removeSelectClass()
+                element.$_removeDelete()
               })
             })
           })
@@ -387,7 +389,11 @@ export default {
       attributes.forEach(item => {
         item.values.forEach(childitem => {
           let functionName = 'set' + childitem.valueName
-          widget[functionName](childitem.defaultValue)
+          if (childitem.isResize) {
+            widget[functionName](childitem.defaultValue + 'px')
+          } else {
+            widget[functionName](childitem.defaultValue)
+          }
         })
       })
     }

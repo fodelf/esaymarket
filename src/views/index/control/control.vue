@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 22:49:10
+ * @LastEditTime: 2019-08-29 19:44:26
  -->
 <template>
   <div class="production">
@@ -49,53 +49,67 @@
       </el-form>
     </div>
     <div class="bottomDiv">
-      <div class='addSite' v-if="templateList.length == 0">
+      <div class='addSite'
+           v-if="templateList.length == 0">
         <div class='addContent'>
           <div class='noSiteBg'></div>
           <p>当前暂无站点哦~</p>
           <el-button type="primary"
-                    class='addSiteBtn'
-                    icon="el-icon-plus"
-                    @click="open">新增第一个站点</el-button>
+                     class='addSiteBtn'
+                     icon="el-icon-plus"
+                     @click="open">新增第一个站点</el-button>
         </div>
       </div>
-      <ul class='siteList clearfix' v-if="templateList.length != 0">
-          <li v-for="(item,index) in templateList"
-              :key="index" class='site clearfix'>
-              <div class='leftSide'>
-                <div class='sideBg'></div>
-              </div>
-              <div class='rightSide'>
-                <span class='name' :title="item.templateName">{{item.templateName}}</span>
-                <span class='url' :title="item.templateUrl">{{item.templateUrl}}</span>
-                <p class='locationUrl clearfix'>
-                  <span v-clipboard:copy="item.templateUrl" v-clipboard:success="onCopy"
-                        v-clipboard:error="onError"><i class='iconfont icon-fuzhi'></i>复制链接</span>
-                  <span><i class='iconfont icon-Group-'></i>二维码</span>
-                  <span><i class='iconfont icon-yuming'></i>绑定独立域名</span>
+      <ul class='siteList clearfix'
+          v-if="templateList.length != 0">
+        <li v-for="(item,index) in templateList"
+            :key="index"
+            class='site clearfix'>
+          <div class='leftSide'>
+            <div class='sideBg'></div>
+          </div>
+          <div class='rightSide'>
+            <span class='name'
+                  :title="item.templateName">{{item.templateName}}</span>
+            <span class='url'
+                  :title="item.templateUrl">{{item.templateUrl}}</span>
+            <p class='locationUrl clearfix'>
+              <span v-clipboard:copy="item.templateUrl"
+                    v-clipboard:success="onCopy"
+                    v-clipboard:error="onError"><i class='iconfont icon-fuzhi'></i>复制链接</span>
+              <span><i class='iconfont icon-Group-'></i>二维码</span>
+              <span><i class='iconfont icon-yuming'></i>绑定独立域名</span>
+            </p>
+            <p class='operation'>
+              <el-button type="primary"
+                         @click="gotoEdit(item.templateId)">编辑</el-button>
+              <el-button type="primary"
+                         @click="gotoData(item)"
+                         plain>查看数据</el-button>
+              <el-button type="primary"
+                         @click="gotoData(item)"
+                         plain>推广（未）</el-button>
+              <el-button type="danger"
+                         @click="deleteTem(item.templateId)"
+                         icon="el-icon-delete">删除</el-button>
+            </p>
+            <div class='bigBox clearfix'>
+              <div class='blockBox'>
+                <p>
+                  <em>访问量</em>
+                  <span :title="item.viewCount">{{item.viewCount}}</span>
                 </p>
-                <p class='operation'>
-                  <el-button type="primary" @click="gotoEdit(item.templateId)">编辑</el-button>
-                  <el-button type="primary" @click="gotoData(item)" plain>查看数据</el-button>
-                  <el-button type="danger"  @click="deleteTem(item.templateId)" icon="el-icon-delete">删除</el-button>
-                </p>
-                <div class='bigBox clearfix'>
-                  <div class='blockBox'>
-                    <p>
-                      <em>访问量</em>
-                      <span :title="item.viewCount">{{item.viewCount}}</span>
-                    </p>
-                  </div>
-                  <div class='blockBox'>
-                    <p>
-                      <em>注册量</em>
-                      <span :title="item.viewCount">{{item.registerCount}}</span>
-                    </p>
-                  </div>
-                </div>
               </div>
-            </li>
-        </ul>
+              <div class='blockBox'>
+                <p>
+                  <em>注册量</em>
+                  <span :title="item.viewCount">{{item.registerCount}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
     <!-- <el-dialog title="新建站点"
                class="clearfix"
