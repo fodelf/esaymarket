@@ -15,27 +15,27 @@ export default {
       site: '全部站点',
       dialogVisible: false,
       templateList: [
-        // {
-        //   templateName: '111',
-        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
-        //   templateId: '222',
-        //   viewCount: 33,
-        //   registerCount: 100
-        // },
-        // {
-        //   templateName: '111',
-        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
-        //   templateId: '222',
-        //   viewCount: 33,
-        //   registerCount: 100
-        // },
-        // {
-        //   templateName: '111',
-        //   templateUrl: 'https://www.ilanx0.net/TSD602qc',
-        //   templateId: '222',
-        //   viewCount: 33,
-        //   registerCount: 100
-        // }
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        },
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        },
+        {
+          templateName: '111',
+          templateUrl: 'https://www.ilanx0.net/TSD602qc',
+          templateId: '222',
+          viewCount: 33,
+          registerCount: 100
+        }
       ]
     }
   },

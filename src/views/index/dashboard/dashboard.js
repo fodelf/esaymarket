@@ -74,6 +74,8 @@ export default {
   mounted () {
     this.drawTransform()
     this.drawTrend()
+    this.drawChannel()
+    this.drawRunPercent()
   },
   methods: {
     /**
@@ -210,6 +212,7 @@ export default {
         },
         yAxis: {
           type: 'value'
+
         },
         series: [
           {
@@ -230,6 +233,101 @@ export default {
             type: 'line',
             stack: '访问趋势',
             data: [22, 18, 19, 23, 29, 33, 31],
+            itemStyle: {
+              normal: {
+                areaStyle: {
+                  type: 'default'
+                }
+              }
+            }
+          }
+        ]
+      }
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
+    },
+    /**
+     * @name: drawChannel
+     * @description: 画渠道占比图
+     */
+    drawChannel () {
+      console.log(this.$refs.channel)
+      var myChart = echarts.init(this.$refs.channel)
+
+      // 指定图表的配置项和数据
+      var option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          boundaryGap: [0, 0.1],
+          axisLine: {
+            show: false
+          }
+
+        },
+        yAxis: {
+          type: 'category',
+          data: ['暂无投放渠道'],
+          name: 'TOP10渠道占比',
+          splitLine: {
+            show: true
+          }
+        },
+        series: [
+
+        ]
+      }
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
+    },
+    /**
+     * @name: drawRunPercent
+     * @description: 画流失率图
+     */
+    drawRunPercent () {
+      console.log(this.$refs.runPercent)
+      var myChart = echarts.init(this.$refs.runPercent)
+
+      // 指定图表的配置项和数据
+      var option = {
+        color: ['#1095fe'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['08-24', '08-25', '08-26', '08-27', '08-28', '08-29', '08-30']
+        },
+        yAxis: {
+          type: 'value',
+          name: '流失率'
+        },
+        series: [
+          {
+            name: '流失率',
+            type: 'line',
+            stack: '流失率',
+            data: [12, 13, 10, 13, 9, 23, 21],
             itemStyle: {
               normal: {
                 areaStyle: {
