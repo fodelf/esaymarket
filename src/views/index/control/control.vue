@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 22:23:22
+ * @LastEditTime: 2019-08-30 08:29:47
  -->
 <template>
   <div class="production">
@@ -21,7 +21,7 @@
                :model="form">
         <el-form-item>
           <el-select v-model="time">
-            <el-option label="默认排序"
+            <el-option label="默认排序未"
                        value="默认排序"></el-option>
             <el-option label="最后创建时间"
                        value="最后创建时间"></el-option>
@@ -31,7 +31,7 @@
         </el-form-item>
         <el-form-item>
           <el-select v-model="site">
-            <el-option label="全部站点"
+            <el-option label="全部站点未"
                        value="全部站点"></el-option>
             <el-option label="已发布"
                        value="已发布"></el-option>

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-14 19:09:48
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 19:23:50
+ * @LastEditTime: 2019-08-30 08:22:35
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
@@ -63,7 +63,7 @@ axios.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-
+      // window.location.href = '/'
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       // if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
       //   // to re-login
