@@ -69,7 +69,9 @@ export default {
   components: {
   },
   created () {
-
+    this.$nextTick(() => {
+      $('.jumpList li').eq(0).addClass('active')
+    })
   },
   mounted () {
     this.drawTransform()
