@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 23:09:16
+ * @LastEditTime: 2019-08-30 08:13:14
  -->
 <template>
   <el-upload class="upload-demo"
@@ -59,8 +59,8 @@ export default {
   created () {
     var value = this.mes.defaultValue
     if (value) {
-      let index = value.split('').reverse().join('').indexOf('/')
-      var str = value.substring(index).split('').reverse().join('')
+      let index = value.lastIndexOf('/')
+      var str = value.substring(index + 1)
       console.log(str)
       this.fileList = [{ name: str, url: value }]
     }

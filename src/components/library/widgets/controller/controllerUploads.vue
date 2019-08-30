@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-14 23:33:19
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 23:16:12
+ * @LastEditTime: 2019-08-30 08:11:57
  -->
 <template>
   <el-upload class="upload-demo"
@@ -70,8 +70,8 @@ export default {
     self.fileList = []
     if (value.length > 0) {
       value.forEach((item) => {
-        let index = item.split('').reverse().join('').indexOf('/')
-        var str = item.substring(index).split('').reverse().join('')
+        let index = item.lastIndexOf('/')
+        var str = item.substring(index + 1)
         self.fileList.push({ name: str, url: value })
       })
     }
