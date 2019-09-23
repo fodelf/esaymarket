@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-30 08:29:47
+ * @LastEditTime: 2019-09-01 20:18:06
  -->
 <template>
   <div class="production">
@@ -104,6 +104,18 @@
                 <p>
                   <em>注册量</em>
                   <span :title="item.viewCount">{{item.registerCount}}</span>
+                </p>
+              </div>
+              <div class='blockBox'>
+                <p>
+                  <em>总成本</em>
+                  <span :title="item.viewCount">0</span>
+                </p>
+              </div>
+              <div class='blockBox'>
+                <p>
+                  <em>单成本</em>
+                  <span :title="item.viewCount">0</span>
                 </p>
               </div>
             </div>

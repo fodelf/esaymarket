@@ -1,50 +1,107 @@
+/*
+ * @Description: 控制台
+ * @Author: 吴文周
+ * @Github: https://github.com/fodelf
+ * @Date: 2019-08-31 21:35:56
+ * @LastEditors: 吴文周
+ * @LastEditTime: 2019-09-01 18:21:49
+ */
 import $ from 'jquery'
 import echarts from 'echarts'
+import { query } from '@/api/index/dashboard.js'
 export default {
   name: 'dashBoard',
   data () {
     return {
       siteNme: '',
+      pageNum: 1,
+      pageSize: 10,
       pickerOptions: {
-        shortcuts: [{
-          text: '最近一周',
-          onClick (picker) {
-            const end = new Date()
-            const start = new Date()
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-            picker.$emit('pick', [start, end])
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近一个月',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近三个月',
+            onClick (picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+              picker.$emit('pick', [start, end])
+            }
           }
-        }, {
-          text: '最近一个月',
-          onClick (picker) {
-            const end = new Date()
-            const start = new Date()
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-            picker.$emit('pick', [start, end])
-          }
-        }, {
-          text: '最近三个月',
-          onClick (picker) {
-            const end = new Date()
-            const start = new Date()
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-            picker.$emit('pick', [start, end])
-          }
-        }]
+        ]
       },
       value: '',
       confiditionList: [
         { name: 'PV', value: 2, tip: '页面浏览量' },
         { name: 'UV', value: 1, tip: '独立访问用户量' },
-        { name: '平均加载时长', value: '1.0秒', tip: '用户进入页面开始到页面加载完成所等待的时长' },
-        { name: '平均停留时长', value: '298.1秒', tip: '用户访问您的网站停留的平均时长' },
-        { name: '流失率', value: '100.0%', tip: '打开网站后无滑动、点击等任何行为就离开的访问占比包含在页面未加载完成就退出的访问' },
-        { name: '转化率', value: '0.0%', tip: '转化率=转化数/访问数,目前转化主要包含用户在您的网站上发生的点击跳转及填单数' }
+        {
+          name: '平均加载时长',
+          value: '1.0秒',
+          tip: '用户进入页面开始到页面加载完成所等待的时长'
+        },
+        {
+          name: '平均停留时长',
+          value: '298.1秒',
+          tip: '用户访问您的网站停留的平均时长'
+        },
+        {
+          name: '流失率',
+          value: '100.0%',
+          tip:
+            '打开网站后无滑动、点击等任何行为就离开的访问占比包含在页面未加载完成就退出的访问'
+        },
+        {
+          name: '转化率',
+          value: '0.0%',
+          tip:
+            '转化率=转化数/访问数,目前转化主要包含用户在您的网站上发生的点击跳转及填单数'
+        }
       ],
       detailList: [
-        { time: '总计', total: 0, clickJump: 0, fillOdds: 0, addFen: 0, ask: 0, tele: 0 },
-        { time: '2019-07-01', total: 0, clickJump: 0, fillOdds: 0, addFen: 0, ask: 0, tele: 0 },
-        { time: '2019-07-01', total: 0, clickJump: 0, fillOdds: 0, addFen: 0, ask: 0, tele: 0 }
+        {
+          time: '总计',
+          total: 0,
+          clickJump: 0,
+          fillOdds: 0,
+          addFen: 0,
+          ask: 0,
+          tele: 0
+        },
+        {
+          time: '2019-07-01',
+          total: 0,
+          clickJump: 0,
+          fillOdds: 0,
+          addFen: 0,
+          ask: 0,
+          tele: 0
+        },
+        {
+          time: '2019-07-01',
+          total: 0,
+          clickJump: 0,
+          fillOdds: 0,
+          addFen: 0,
+          ask: 0,
+          tele: 0
+        }
       ],
       headerList: [
         { name: '时间', code: 'time' },
@@ -57,21 +114,40 @@ export default {
       ],
       jumpList: [
         { className: 'confiditions', iconName: 'icon-gaikuang', value: '概况' },
-        { className: 'changeDetail', iconName: 'icon-biaoge', value: '转化明细' },
-        { className: 'changeList', iconName: 'icon-mokuaizhuanhua', value: '转化' },
+        {
+          className: 'changeDetail',
+          iconName: 'icon-biaoge',
+          value: '转化明细'
+        },
+        {
+          className: 'changeList',
+          iconName: 'icon-mokuaizhuanhua',
+          value: '转化'
+        },
         { className: 'accessTrend', iconName: 'icon-qushi', value: '访问趋势' },
-        { className: 'channelPro', iconName: 'icon-qudaoqushiduibifenxi', value: '渠道占比' },
-        { className: 'runPercent', iconName: 'icon-lilvfudongguize', value: '流失率' }
-
+        {
+          className: 'channelPro',
+          iconName: 'icon-qudaoqushiduibifenxi',
+          value: '渠道占比'
+        },
+        {
+          className: 'runPercent',
+          iconName: 'icon-lilvfudongguize',
+          value: '流失率'
+        }
       ]
     }
   },
-  components: {
-  },
+  components: {},
   created () {
     this.$nextTick(() => {
-      $('.jumpList li').eq(0).addClass('active')
+      $('.jumpList li')
+        .eq(0)
+        .addClass('active')
     })
+    if (this.$route.query.temId) {
+      this.query()
+    }
   },
   mounted () {
     this.drawTransform()
@@ -81,12 +157,34 @@ export default {
   },
   methods: {
     /**
+     * @name: query
+     * @description: 默认描述
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    query () {
+      let param = {
+        templateId: this.$route.query.temId,
+        pageNum: this.pageNum,
+        pageSize: this.pageSize,
+        beginTime: this.value[0],
+        endTime: this.value[1]
+      }
+      let self = this
+      query(param).then(res => {
+        self.detailList = res.list
+      })
+    },
+    /**
      * @name: jump
      * @description: 锚点跳转
      */
     jump (item, e) {
       console.log(e.currentTarget)
-      $(e.currentTarget).addClass('active').siblings().removeClass('active')
+      $(e.currentTarget)
+        .addClass('active')
+        .siblings()
+        .removeClass('active')
       var anchor = $('.floorList').children('.' + item.className)[0]
       console.log(anchor)
       $('.rightContent').animate({ scrollTop: anchor.offsetTop }, 1000)
@@ -118,7 +216,15 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['08-23', '08-24', '08-25', '08-26', '08-27', '08-28', '08-29'],
+            data: [
+              '08-23',
+              '08-24',
+              '08-25',
+              '08-26',
+              '08-27',
+              '08-28',
+              '08-29'
+            ],
             axisLabel: {
               interval: 0,
               rotate: 45, // 倾斜度 -90 至 90 默认为0
@@ -214,7 +320,6 @@ export default {
         },
         yAxis: {
           type: 'value'
-
         },
         series: [
           {
@@ -277,7 +382,6 @@ export default {
           axisLine: {
             show: false
           }
-
         },
         yAxis: {
           type: 'category',
@@ -287,9 +391,7 @@ export default {
             show: true
           }
         },
-        series: [
-
-        ]
+        series: []
       }
 
       // 使用刚指定的配置项和数据显示图表。

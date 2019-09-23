@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-04 17:39:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-27 20:16:35
+ * @LastEditTime: 2019-09-04 17:31:43
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -101,7 +101,8 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: 'http://116.85.15.199:9879',
+        // target: 'http://116.85.15.199:9879',
+        target: 'http://192.168.33.123:9879',
         ws: false
       }
     }

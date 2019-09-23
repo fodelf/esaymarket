@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-07 19:58:27
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 22:04:31
+ * @LastEditTime: 2019-09-01 09:44:49
  */
 import QRCode from 'qrcodejs2'
 import { uuid, getUrlParam } from '@/utils/index.js'
@@ -303,7 +303,7 @@ export default {
         preview(param)
           .then(res => {
             this.$message({
-              message: '保存成功',
+              message: '保存成功，可以刷新控制台列表查看',
               type: 'success'
             })
           })
