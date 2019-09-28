@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-09-01 20:18:06
+ * @LastEditTime: 2019-09-27 18:55:41
  -->
 <template>
   <div class="production">
@@ -77,6 +77,10 @@
               <span v-clipboard:copy="'http://easymarket.chehe88.com/preview.html?templateId=' + item.templateId"
                     v-clipboard:success="onCopy"
                     v-clipboard:error="onError"><i class='iconfont icon-fuzhi'></i>复制链接</span>
+              <span @click="createAppFn('http://easymarket.chehe88.com/preview.html?templateId=' + item.templateId)"
+                    style="curor:pointer">
+                <i class='el-icon-mobile-phone'></i>生成app</span>
+              <span><i class='iconfont icon-yuming'></i>生成小程序</span>
               <span><i class='iconfont icon-Group-'></i>二维码</span>
               <span><i class='iconfont icon-yuming'></i>绑定独立域名</span>
             </p>
@@ -134,6 +138,20 @@
         <span>使用模板创建</span>
       </div>
     </el-dialog> -->
+
+    <el-dialog title="创建App，这个弹出是告诉你功能"
+               class="clearfix"
+               center
+               :visible.sync="dialogApp">
+      <div>
+        <span></span>
+      </div>
+      <div>
+        <el-button type="primary"
+                   @click="create">生成app</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 

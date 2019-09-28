@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-05 17:27:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-09-01 10:04:37
+ * @LastEditTime: 2019-09-25 19:29:03
  */
 import request from '@/utils/request'
 
@@ -25,6 +25,13 @@ export function query (params) {
 export function SOLIDER_33 (params) {
   return request({
     url: '/compcag/SOLIDER_33',
+    method: 'POST',
+    params: params
+  })
+}
+export function createApp (params) {
+  return request({
+    url: '/app/createApp',
     method: 'POST',
     params: params
   })

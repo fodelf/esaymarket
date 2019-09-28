@@ -10,6 +10,47 @@
     line-height: 48px;
     background: #25282e;
 
+    .mes {
+      margin-left: 10px;
+      height: 100%;
+      display: inline-block;
+
+      .child {
+        height: 20px;
+        width: 100%;
+        text-align: center;
+        color: #409EFF;
+        margin: 5px;
+        cursor: pointer;
+
+        a {
+          color: #409EFF;
+        }
+      }
+    }
+
+    .mes:hover {
+      .meslist {
+        display: block
+      }
+    }
+
+    .meslist {
+      height: 200px;
+      width: 85px;
+      display: none;
+      padding: 8px 16px !important;
+      position: absolute;
+      top: 43px;
+      right: 41px;
+      z-index: 999;
+      background-color: #FFF;
+      -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
     .logoTit {
       float: left;
       color: #fff;

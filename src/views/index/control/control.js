@@ -4,9 +4,9 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-21 15:40:46
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-31 21:37:08
+ * @LastEditTime: 2019-09-23 20:54:42
  */
-import { queryTemplateList } from '@/api/index/control.js'
+import { queryTemplateList, createApp } from '@/api/index/control.js'
 export default {
   name: 'Control',
   data () {
@@ -45,6 +45,33 @@ export default {
   },
   mounted () {},
   methods: {
+    /**
+     * @name: createApp
+     * @description: 默认描述
+     * @param {type}: 默认参数
+     * @return {type}: 默认类型
+     */
+    createAppFn (url) {
+      this.$message({
+        message:
+          '友情提示：当前只能创建安卓内嵌版网页的app,ios版本以及native或者原生（无所谓是什么）在下面的版中陆续开放！',
+        type: 'warning',
+        duration: 5 * 1000
+      })
+      let param = {
+        userId: localStorage.getItem('userId') * 1,
+        url: url
+      }
+      // var self = this
+      createApp(param).then(res => {
+        this.$message({
+          message: '生成app的任务已经开始，请稍后再消息中心下载！',
+          type: 'success',
+          duration: 5 * 1000
+        })
+        // self.templateList = res.list
+      })
+    },
     /**
      * @name: init
      * @description: 查询列表

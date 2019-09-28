@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-11 18:59:40
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-29 19:50:48
+ * @LastEditTime: 2019-09-27 18:54:54
  -->
 <template>
   <div style="height:100%"
@@ -20,10 +20,26 @@
                       disabled>解决方案（暂未开放）</el-menu-item>
         <el-menu-item index=""
                       disabled>研究院（暂未开放）</el-menu-item>
+        <el-menu-item index=""
+                      disabled>云开发</el-menu-item>
         <el-menu-item index="/control">控制台</el-menu-item>
       </el-menu>
       <p v-if="userName">
         <span>欢迎你！<em>{{userName}}</em></span>
+        <span class="mes">
+          <i class='el-icon-bell'
+             title="消息"
+             @click="getMes()"
+             style="cursor: pointer"></i>
+          <div class="meslist">
+            <div v-for="(item,index) in meslist"
+                 :key="index"
+                 class="child">
+              <a :href='item.appUrl'
+                 download="app-release.apk">排序{{index}}下载</a>
+            </div>
+          </div>
+        </span>
         <i class='iconfont icon-tuichudenglu'
            title="退出登录"
            @click="logout()"></i>
@@ -43,18 +59,26 @@
 </template>
 
 <script>
+import { queryAppById } from '@/api/index/common.js'
 export default {
   name: 'Main',
   data () {
     return {
       userName: '',
-      activePath: '/'
+      activePath: '/',
+      meslist: []
     }
   },
   components: {
   },
   mounted () {
-
+    let param = {
+      userId: localStorage.getItem('userId') * 1
+    }
+    var self = this
+    queryAppById(param).then(res => {
+      self.meslist = res
+    })
   },
   methods: {
     /**

@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-06-04 17:39:53
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-09-04 17:31:43
+ * @LastEditTime: 2019-09-24 13:02:12
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -20,9 +20,9 @@ const ispro = process.env.NODE_ENV !== 'development'
 // gizp 压缩资源配置类型
 const GzipExtensions = ['js', 'css', 'png', 'jpg']
 
-function resolve (dir) {
-  return path.join(__dirname, dir)
-}
+// function resolve (dir) {
+//   return path.join(__dirname, dir)
+// }
 const plugins = [
   // dll插件加入
   new webpack.DllReferencePlugin({
@@ -102,7 +102,13 @@ module.exports = {
     proxy: {
       '/api': {
         // target: 'http://116.85.15.199:9879',
-        target: 'http://192.168.33.123:9879',
+        target: 'http://116.85.15.199:9879',
+        ws: false
+      },
+      '/queryAppById': {
+        // target: 'http://116.85.15.199:9879',
+        // target: 'http://localhost:9070',
+        target: 'http://47.100.88.59:9071',
         ws: false
       }
     }
