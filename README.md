@@ -17,7 +17,7 @@ Develop by Drag&Drop
 PS:前后端端代码开源，生成app的功能代码运行在本人机器上面的sring-boot微服务
 </p>
 
-### 🔗Links/相关链接
+### Links/相关链接
 
 体验地址 http://easymarket.chehe88.com/
 
@@ -35,8 +35,8 @@ PS:前后端端代码开源，生成app的功能代码运行在本人机器上�
 
    - [x] 移动页面
    - [x] 安卓
-   - [ ] 苹果尚未开发
-   - [ ] 小程序尚未开发
+   - [ ] ios
+   - [ ] 小程序
 
 3. 数据分析
 
