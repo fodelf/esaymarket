@@ -16,7 +16,7 @@
 Develop by Drag&Drop
 </p>
 <p>
-前后端端代码开源，生成app的功能代码运行在本人机器上面的微服务(如有需要call me)，功能代码已经上传git
+前后端端代码开源，生成app的功能代码运行在本人机器上面的微服务(如有需要call me)，利用flutter实现生成app内嵌功能代码已经上传git，之后会选择更好性能的树渲染，而不是现在的内嵌webview
 </p>
 
 ### Links/相关链接
