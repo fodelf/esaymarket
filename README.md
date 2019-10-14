@@ -14,7 +14,9 @@
 </p>
 <p>
 Develop by Drag&Drop
-PS:前后端端代码开源，生成app的功能代码运行在本人机器上面的sring-boot微服务
+</p>
+<p>
+前后端端代码开源，生成app的功能代码运行在本人机器上面的微服务(如有需要call me)，功能代码已经上传git
 </p>
 
 ### Links/相关链接
