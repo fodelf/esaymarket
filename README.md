@@ -7,7 +7,7 @@
 <p>
    PS:此项目本人负责需求分析，项目技术设计，拖拽功能，生成app的微服务,
    其他功能由另外两个小伙伴完成，
-   项目比较冲忙一个月利用加班之余的时间开发完成，不足之处还望指正
+   项目比较匆忙一个月利用加班之余的时间开发完成，不足之处还望指正
 </p>
 <p>
 基于Vue开发，通过拖拽的形式，生成移动页面，app,小程序。
@@ -82,3 +82,14 @@ npm run dll
 ```
 npm run serve
 ```
+### 扩展组件 配置就可以了，记得可以自定义方法哦
+```
+图标目录  src/views/edit/mainArea/mainAreaConfig.js
+```
+```
+组件目录 src/components/library/widgets/views
+```
+```
+组件配置目录  src/components/library/widgets/configs
+```
+
