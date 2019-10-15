@@ -82,3 +82,8 @@ npm run dll
 ```
 npm run serve
 ```
+### 扩展组件 配置就可以了，记得可以自定方法哦
+图标目录  src/views/edit/mainArea/mainAreaConfig.js
+组件目录 src/components/library/widgets/views
+组件配置目录  src/components/library/widgets/configs
+
