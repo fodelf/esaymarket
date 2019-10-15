@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-14 19:09:48
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-30 08:22:35
+ * @LastEditTime: 2019-10-15 17:56:23
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
@@ -59,9 +59,10 @@ axios.interceptors.response.use(
     // if the custom code is not 000000, it is judged as an error.
     if (res.code !== '000000') {
       Message({
-        message: res.msg || 'error',
+        message: res.msg || '出错啦！',
         type: 'error',
-        duration: 5 * 1000
+        duration: 5 * 1000,
+        showClose: true
       })
       // window.location.href = '/'
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
@@ -85,9 +86,10 @@ axios.interceptors.response.use(
   error => {
     console.log('err' + error) // for debug
     Message({
-      message: error.message,
+      message: '没事，只是服务器出错啦！',
       type: 'error',
-      duration: 5 * 1000
+      duration: 5 * 1000,
+      showClose: true
     })
     return Promise.reject(error)
   }
