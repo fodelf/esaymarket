@@ -4,13 +4,13 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-08-14 19:09:48
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-10-15 17:56:23
+ * @LastEditTime: 2019-10-15 22:42:39
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
 // import { MessageBox, Message } from 'element-ui'
 // import store from '@/pages/store/index.js'
-import { getToken } from '@/utils/auth'
+import { getToken } from './auth'
 
 // create an axios instance
 axios.create({
@@ -35,7 +35,7 @@ axios.interceptors.request.use(
   },
   error => {
     // do something with request error
-    console.log(error) // for debug
+    // console.log(error) // for debug
     return Promise.reject(error)
   }
 )
@@ -84,7 +84,7 @@ axios.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    // console.log('err' + error) // for debug
     Message({
       message: '没事，只是服务器出错啦！',
       type: 'error',

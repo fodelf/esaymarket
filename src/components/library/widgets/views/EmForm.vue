@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:31:07
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-26 08:27:30
+ * @LastEditTime: 2019-10-15 22:39:21
  -->
 <template>
   <div ref="widget"
@@ -31,8 +31,8 @@
 </template>
 <script>
 import viewVue from './view.vue'
-import { getUrlParam } from '@/utils/index.js'
-import { submitForm } from '@/api/preview/preview.js'
+import { getUrlParam } from '../../../../utils/index.js'
+import { submitForm } from '../../../../api/preview/preview.js'
 import { debounce } from 'lodash'
 export default {
   name: 'Swipe',

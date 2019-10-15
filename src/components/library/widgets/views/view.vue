@@ -4,7 +4,7 @@
  * @Github: https://github.com/fodelf
  * @Date: 2019-05-08 12:26:29
  * @LastEditors: 吴文周
- * @LastEditTime: 2019-08-22 23:29:30
+ * @LastEditTime: 2019-10-15 22:43:01
  -->
 <template>
   <div class="widget"
@@ -12,7 +12,7 @@
 </template>
 <script>
 import { debounce } from 'lodash'
-import decorator from '@/components/library/eyDecorator/decorator.js'
+import decorator from '../../../../components/library/eyDecorator/decorator.js'
 export default {
   name: 'view',
   props: ['id'],
@@ -163,7 +163,7 @@ export default {
     window.removeEventListener('resize', this.__resizeHandler)
   },
   create () {
-    console.log('v')
+    // console.log('v')
   }
 }
 </script>

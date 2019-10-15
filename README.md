@@ -58,11 +58,11 @@ Develop by Drag&Drop
    - [ ] 云函数
    - [ ] 云数据库
    - [ ] 云文件
-   
+
 6. 插件功能
 
-   - [ ] vue插件-符合数据格式，npm i xx就可以使用
-   - [ ] webview插件
+   - [ ] vue 插件-符合数据格式，npm i xx 就可以使用
+   - [ ] webview 插件
 
 #### 技术栈（当前）
 
@@ -87,14 +87,39 @@ npm run dll
 ```
 npm run serve
 ```
+
 ### 扩展组件 配置就可以了，记得可以自定义方法哦
+
 ```
 图标目录  src/views/edit/mainArea/mainAreaConfig.js
 ```
+
 ```
 组件目录 src/components/library/widgets/views
 ```
+
 ```
 组件配置目录  src/components/library/widgets/configs
 ```
 
+### vue 插件功能（后端功能尚未实现，路径打包方式待优化,打包插件暂用 vue cli3 自带功能实现 请同学们自行安装）
+
+```
+详细工程流会在我之后开源的 EasyWork，一键工作台的开源项目中说明从组件设计到开发，再到 Jenkins,发布项目，发布组件到仓库，生成测试报告，邮件推送等
+```
+
+```
+在终端中进入此目录下  src/pages/plugin
+```
+
+```
+执行 vue serve App.vue 可以查看开发状态插件
+```
+
+```
+执行 vue build -t lib -n easyMarket main.js 打包插件，修改package.json ，登陆npm 或者 私有仓库 发布包
+```
+
+```
+在需要引入当前页面插件的Vue项目中 npm i xx 上传的项目名称，在主入口js 中 import xx from 'xx' ，再使用Vue.use(xx)
+```
