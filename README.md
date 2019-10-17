@@ -26,6 +26,14 @@ Develop by Drag&Drop
 
 知乎视频 https://zhuanlan.zhihu.com/p/84963609
 
+后端代码地址
+
+网关 https://github.com/fodelf/negate
+
+生成App微服务  https://github.com/fodelf/esayApp
+
+生成配置等基础业务微服务 https://github.com/hzylyh/EasyMarket-java
+
 ### Features
 
 1. 组件
