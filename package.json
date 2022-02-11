@@ -41,7 +41,7 @@
     "image-webpack-loader": "^5.0.0",
     "jquery": "^3.4.1",
     "js-md5": "^0.7.3",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "qrcodejs2": "0.0.2",
     "sass-loader": "^7.1.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
